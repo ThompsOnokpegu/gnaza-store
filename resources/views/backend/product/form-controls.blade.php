@@ -196,36 +196,7 @@
           <!-- Checkboxes and Radios -->
           <div class="card-body">
             <div class="row gy-3">
-              <div class="col-md">
-                <small class="text-light fw-semibold">Checkboxes</small>
-                <div class="form-check mt-3">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                  <label class="form-check-label" for="defaultCheck1"> Unchecked </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" checked />
-                  <label class="form-check-label" for="defaultCheck2"> Indeterminate </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck3" checked />
-                  <label class="form-check-label" for="defaultCheck3"> Checked </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="disabledCheck1" disabled />
-                  <label class="form-check-label" for="disabledCheck1"> Disabled Unchecked </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="disabledCheck2"
-                    disabled
-                    checked
-                  />
-                  <label class="form-check-label" for="disabledCheck2"> Disabled Checked </label>
-                </div>
-              </div>
+              
               <div class="col-md">
                 <small class="text-light fw-semibold">Radio</small>
                 <div class="form-check mt-3">

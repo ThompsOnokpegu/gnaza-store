@@ -2,7 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Models\AttributeOption;
 use App\Models\ProductAttribute;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class CreateAttribute extends Component
@@ -22,15 +24,25 @@ class CreateAttribute extends Component
         $this->count ++;
     }
 
-    public function saveVariation(){  
-
-        $values = json_encode($this->attribute_values);
-
+    public function saveAttribute(){
+        DB::beginTransaction();
+        //create the attribute 
         $attribute = ProductAttribute::create([
             'name' => $this->name,
             'slug' => $this->slug,
-            'values' => $values,
         ]);
+        //create the attribute options
+        
+        foreach($this->attribute_values as $value){
+            $attributeOption = new AttributeOption();
+            $attributeOption->product_attribute_id = $attribute->id;
+            $attributeOption->value = $value;
+            $attributeOption->save();
+        }
+        DB::commit();
+        $this->reset();
+        return session()->flash('saved','Saved successfully!');
 
     }
+
 }

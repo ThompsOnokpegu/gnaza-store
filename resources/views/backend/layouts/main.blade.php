@@ -39,24 +39,22 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/vendor/css/theme-default.css') }}" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ asset('backend/assets/css/demo.css') }}" />
     <link rel="stylesheet" href="{{ asset('backend/assets/custom.css') }}" />
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
-    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
-    
+    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('backend/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
-
+    
     <link rel="stylesheet" href="{{ asset('backend/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
-
+    
     <!-- Page CSS -->
-
+    <link rel="stylesheet" href="{{ asset('backend/custom/multi-select/choices.css') }}">
+    
     <!-- Helpers -->
     <script src="{{ asset('backend/assets/vendor/js/helpers.js') }}"></script>
-
+    
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="{{ asset('backend/assets/js/config.js') }}"></script>
-    @livewireStyles
+      <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+      <script src="{{ asset('backend/assets/js/config.js') }}"></script>
+      @livewireStyles
   </head>
 
   <body>
@@ -117,18 +115,18 @@
     <script src="{{ asset('backend/assets/js/dashboards-analytics.js') }}"></script>
 
     
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    
-    <!-- Dropezone JS -->
-    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
+    <script src="{{ asset('backend/custom/multi-select/choices.js') }}"></script>
+
     <script>
+   
     $(document).ready(function() {
-            $('.js-example-basic-multiple').select2({
-              tags: true,
-              placeholder: "Select a size",
-              width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
-            });
-      });
+      //choices
+      const element = document.getElementById('sizes');
+      const choices = new Choices(element);
+      //endchoices
+      
+    });
     upload.onchange = evt => {
             preview = document.getElementById('preview');
             preview.style.display = 'block';

@@ -3,6 +3,11 @@
     <div class="col-md">
       <div class="card mb-4">
         <div class="card-body">
+          @if(session()->has('saved'))
+            <div class="alert alert-success">
+              {{ session('saved') }}
+            </div>
+          @endif
           <div>
             <input
               type="text"
@@ -45,7 +50,7 @@
           <div wire:loading>
             Saving...
           </div>
-          <button wire:loading.remove wire:click.prevent="saveVariation" class="btn btn-primary mt-3">Save</button>
+          <button wire:loading.remove wire:click.prevent="saveAttribute" class="btn btn-primary mt-3">Save</button>
         </div>
       </div>
       @livewire('display-attributes')

@@ -16,9 +16,9 @@
             <div class="mb-3">
                 <select id="defaultSelect" class="form-select">
                   <option>Category</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  @foreach($categories as $category)
+                    <option value="{{ $category->name }}">{{ $category->name }}</option>
+                  @endforeach
                 </select>
             </div>
             <div>
@@ -76,13 +76,33 @@
       <div class="card mb-4">
         <h5 class="card-header">Attributes</h5>
         <div class="card-body">
-          <div>
-            <select class="js-example-basic-multiple mb-3" id="defaultSelect" name="product_sizes[]" multiple="multiple">
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-            </select> 
+          
+          <div class="mb-3">
+            <label for="defaultSelect" class="form-label">Product Type</label>
+            <select wire:model.live='product_type'id="defaultSelect" class="form-select">
+              <option value="simple">Simple Product</option>
+              <option value="variable">Variable Product</option>
+            </select>
+            
+          </div>
+          <small class="text-light fw-semibold">Add Attributes</small>
+            @forelse($attributes as $attribute)
+              <div class="form-check form-check-inline mt-3">
+                <input class="form-check-input" type="checkbox" id="{{ $attribute->slug }}" value="{{ $attribute->id }}" />
+                <label class="form-check-label" for="{{ $attribute->slug }}">{{ $attribute->name }}</label>
+              </div>
+            @empty
+              <div class="alert alert-info">
+                No available attributes!
+              </div>
+            @endforelse
+          <div class="mt-2 mb-3">
+            <select class="js-example-basic-multiple mb-3 form-select" id="sizes" name="product_sizes[]" multiple="multiple">
+                <option value="S">Small</option>
+                <option value="M">Medium</option>
+                <option value="L">Large</option>
+                <option value="XL">Xtra Large</option>
+            </select>               
           </div>
         </div>
       </div>

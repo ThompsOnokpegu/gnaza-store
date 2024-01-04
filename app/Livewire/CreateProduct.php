@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Models\Category;
+use App\Models\ProductAttribute;
 use Livewire\Component;
 
 class CreateProduct extends Component
@@ -12,11 +14,15 @@ class CreateProduct extends Component
     public $sizes = ['S', 'M', 'L'];
     public $colors = ['Black', 'Blue'];
     public $quantities = [];
+    public $product_type;
 
     public function render()
     {
+        $categories = Category::all();
+        $attributes = ProductAttribute::all();
         return view('livewire.product.create-product')
-        ->extends('backend.layouts.main');
+        ->extends('backend.layouts.main')
+        ->with(['categories'=>$categories,'attributes'=>$attributes]);
     }
 
     public function createProduct()

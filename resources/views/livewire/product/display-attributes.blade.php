@@ -5,20 +5,14 @@
         <thead>
             <th>Name</th>
             <th>Slug</th>
-            <th>Options</th>
         </thead>
         <tbody>
             @foreach($attributes as $attribute)
-
             <tr>
                 <td>{{ $attribute['name'] }}</td>
-                <td>{{ $attribute['slug'] }}</td>
-                <td>{{ $attribute['values'] }}</td>
-                
+                <td>{{ $attribute['slug'] }}</td>                
             </tr>
-
-            @endforeach
-            
+            @endforeach   
         </tbody>
       </table>
     </div>

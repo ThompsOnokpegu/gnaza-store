@@ -2,6 +2,7 @@
 
 use App\Livewire\CreateAttribute;
 use App\Livewire\CreateProduct;
+use App\Livewire\AddProduct;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +22,5 @@ Route::get('/', function () {
 
 Route::get('/products', CreateProduct::class)->name('products');
 Route::get('/attributes', CreateAttribute::class)->name('attributes');
+Route::get('/add', AddProduct::class )->name('add');
 
