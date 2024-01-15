@@ -80,7 +80,7 @@
       </li>
       <!-- Extended components -->
       <li class="menu-item">
-        <a href="{{ route('attributes') }}" wire:navigate class="menu-link">
+        <a href="" wire:navigate class="menu-link">
           <i class="menu-icon tf-icons bx bx-shopping-bag"></i>
           <div data-i18n="Extended UI">Attributes</div>
         </a>
