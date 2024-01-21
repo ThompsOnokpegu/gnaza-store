@@ -80,15 +80,15 @@
       </li>
       <!-- Extended components -->
       <li class="menu-item">
-        <a href="" wire:navigate class="menu-link">
-          <i class="menu-icon tf-icons bx bx-shopping-bag"></i>
-          <div data-i18n="Extended UI">Attributes</div>
-        </a>
-      </li>
-      <li class="menu-item">
         <a href="{{ route('products') }}" wire:navigate class="menu-link">
           <i class="menu-icon tf-icons bx bx-dish"></i>
           <div data-i18n="Extended UI">Products</div>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="{{ route('product.create') }}" wire:navigate class="menu-link">
+          <i class="menu-icon tf-icons bx bx-shopping-bag"></i>
+          <div data-i18n="Extended UI">Add New</div>
         </a>
       </li>
       <li class="menu-item">

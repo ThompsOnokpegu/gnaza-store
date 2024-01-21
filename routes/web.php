@@ -1,5 +1,8 @@
 <?php
-use App\Livewire\CreateProduct;
+
+use App\Http\Controllers\ProductController;
+use App\Livewire\Backend\Product\CreateProduct;
+use App\Livewire\Backend\Product\UpdateProduct;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('backend.index');
 });
+Route::prefix('admin')->group(function () {
+    Route::get('/products',[ProductController::class,'index'])->name('products');
+    Route::get('/product/{product:slug}/delete', [ProductController::class,'destroy'])->name('product.destroy');
+    Route::get('/product/{product:slug}/edit', UpdateProduct::class)->name('product.edit');//livewire
+    Route::get('/product/create', CreateProduct::class)->name('product.create');//livewire
+});
 
-Route::get('/products', CreateProduct::class)->name('products');
 
 
