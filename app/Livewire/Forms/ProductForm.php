@@ -8,13 +8,12 @@ use Livewire\Form;
 
 class ProductForm extends Form
 {
-
     #[Validate('required',message:'Product name is required')]
     #[Validate('min:5')]
     public $name;
     public $slug;
     #[Validate('required',message:'Product category is required')]
-    public $category;
+    public $category_id;
 
     #[Validate('required',message:'Describe the product')]
     public $description;
@@ -30,6 +29,8 @@ class ProductForm extends Form
     #[Validate('required',message:'Low stock threshold is required')]
     public $low_stock_threshold;
     public $tags;
+    #[Validate('required',message:'Product image is required')]
+    //#[Validate('image|max:1024')] // 1MB Max
     public $product_image;
     public $image_gallery;
     public $sales_start_date;
@@ -44,7 +45,7 @@ class ProductForm extends Form
     public function setProduct(Product $product){
         $this->name = $product->name;
         $this->slug = $product->slug;
-        $this->category = $product->category; 
+        $this->category_id = $product->category_id; 
         $this->description = $product->description; 
         $this->regular_price = $product->regular_price; 
         $this->sales_price = $product->sales_price; 

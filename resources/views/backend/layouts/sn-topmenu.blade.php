@@ -12,6 +12,8 @@ id="layout-navbar">
     <div class="nav-item d-flex align-items-center">
       <i class="bx bx-search fs-4 lh-0"></i>
       <input
+        name="search"
+        id="search"
         type="text"
         class="form-control border-0 shadow-none"
         placeholder="Search..."

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Livewire\Backend\Product\CreateProduct;
 use App\Livewire\Backend\Product\UpdateProduct;
@@ -24,6 +25,10 @@ Route::prefix('admin')->group(function () {
     Route::get('/product/{product:slug}/delete', [ProductController::class,'destroy'])->name('product.destroy');
     Route::get('/product/{product:slug}/edit', UpdateProduct::class)->name('product.edit');//livewire
     Route::get('/product/create', CreateProduct::class)->name('product.create');//livewire
+});
+Route::prefix('admin')->group(function () {
+    Route::get('/orders',[OrderController::class,'index'])->name('orders');
+    Route::get('/orders/{order:reference}',[OrderController::class,'details'])->name('order.details');
 });
 
 

@@ -97,25 +97,20 @@
           <div data-i18n="Extended UI">Categories</div>
         </a>
       </li>
+      
+      <li class="menu-header small text-uppercase">
+        <span class="menu-header-text">Order</span>
+      </li>
+      <li class="menu-item">
+        <a class="menu-link" wire:navigate href="{{ route('orders') }}">
+          <i class="bx bx-cog me-2"></i>
+          <span class="align-middle">Orders</span>
+        </a>
+      </li>
       <li class="menu-item">
         <a href="#" class="menu-link">
           <i class="menu-icon tf-icons bx bx-bar-chart"></i>
           <div data-i18n="Extended UI">Sales Report</div>
-        </a>
-      </li>
-      <li class="menu-header small text-uppercase">
-        <span class="menu-header-text">Account</span>
-      </li>
-      <li class="menu-item">
-        <a class="menu-link" href="#">
-          <i class="bx bx-cog me-2"></i>
-          <span class="align-middle">My Profile</span>
-        </a>
-      </li>
-      <li class="menu-item">
-        <a class="menu-link" href="#">
-          <i class="bx bx-transfer me-2"></i>
-          <span class="align-middle">Payout</span>
         </a>
       </li>
       <li class="menu-item">

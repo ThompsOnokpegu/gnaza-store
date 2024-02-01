@@ -14,6 +14,7 @@ class Product extends Model
     use HasFactory;
     
     protected $fillable = [
+        'category_id',
         'name',
         'slug',
         'description',
@@ -35,11 +36,6 @@ class Product extends Model
         'status',
     ];
 
-    // public function attributes()
-    // {
-    //     return $this->belongsToMany(Attribute::class)
-    //         ->withPivot('attribute_value_id', 'quantity');
-    // }
 
     public function category():BelongsTo{
         return $this->belongsTo(Category::class);

@@ -16,7 +16,7 @@
         <tbody>
           @forelse($products as $product)
              <tr wire:key='{{ $product->id }}'>
-                <td><a wire:navigate href="{{ route('product.edit',$product->slug) }}"><img src="{{ asset('/backend/assets/img/avatars/5.png') }}" alt="Avatar" class="rounded-2" width=40></i> <span class="fw-medium"><span>{{ $product->name }}</span></a></td>
+                <td><a wire:navigate href="{{ route('product.edit',$product->slug) }}"><img src="{{ env('BASE_URL').$product->product_image }}" alt="Avatar" class="rounded-2" width=40></i> <span class="fw-medium"><span>{{ $product->name }}</span></a></td>
                 <td>₦{{ $product->regular_price }}</td>
                 <td>{{ $product->stock_quantity }}</td>
                 <td>{{ $product->sku }}</td>

@@ -46,8 +46,7 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
     
     <!-- Page CSS -->
-    <link rel="stylesheet" href="{{ asset('backend/custom/multi-select/choices.css') }}">
-    
+
     <!-- Helpers -->
     <script src="{{ asset('backend/assets/vendor/js/helpers.js') }}"></script>
     
@@ -116,28 +115,18 @@
 
     
     {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
-    <script src="{{ asset('backend/custom/multi-select/choices.js') }}"></script>
 
     <script>
-   
-    $(document).ready(function() {
-      //choices
-      const element = document.getElementById('sizes');
-      const choices = new Choices(element);
-      //endchoices
-      
-    });
-    upload.onchange = evt => {
-            preview = document.getElementById('preview');
-            preview.style.display = 'block';
-            const [file] = upload.files
-            if (file) {
-                preview.src = URL.createObjectURL(file)
-            }
+      //product image preview
+      product_image.onchange = evt => {
+        preview = document.getElementById('preview');
+        preview.style.display = 'block';
+        const [file] = product_image.files
+        if (file) {
+            preview.src = URL.createObjectURL(file)
         }
-        
-        
-  </script>
+      }   
+    </script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
