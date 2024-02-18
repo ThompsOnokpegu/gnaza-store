@@ -47,25 +47,25 @@
                 <hr class="border-gz-brown-300"/>
                 <div class="mx-auto max-w-screen-xl px-4 py-4">
                     <div class="flex items-center justify-between gap-x-8">
-                        <a class="flex cursor-pointer items-center gap-x-1">
-                        <img class="object-cover h-14" src="{{ asset('frontend/images/gz 3.png') }}" alt="logo" />
+                        <a href="{{ route('home') }}" class="flex cursor-pointer items-center gap-x-1">
+                            <img class="object-cover h-14" src="{{ asset('frontend/images/gz 3.png') }}" alt="logo" />
                         {{-- <span class="text-lg font-black text-gray-900">Gnaza</span> --}}
                         </a>
                         <ul class="flex items-center gap-x-6">
                         <li class="hidden md:block">
-                            <a class="cursor-pointer text-sm font-medium text-gray-900 hover:text-gray-900/70">HOME</a>
+                            <a href="{{ route('home') }}" class="cursor-pointer text-sm font-medium text-gz-brown-200 hover:text-gz-brown-100">HOME</a>
                         </li>
                         <li class="hidden md:block">
-                            <a class="cursor-pointer text-sm font-medium text-gray-900 hover:text-gray-900/70">RINGS</a>
+                            <a class="cursor-pointer text-sm font-medium text-gz-brown-200 hover:text-gz-brown-100">RINGS</a>
                         </li>
                         <li class="hidden md:block">
-                            <a class="cursor-pointer text-sm font-medium text-gray-900 hover:text-gray-900/70">NECKLACES</a>
+                            <a class="cursor-pointer text-sm font-medium text-gz-brown-200 hover:text-gz-brown-100">NECKLACES</a>
                         </li>
                         <li class="hidden md:block">
-                            <a class="cursor-pointer text-sm font-medium text-gray-900 hover:text-gray-900/70">BRACELETS</a>
+                            <a class="cursor-pointer text-sm font-medium text-gz-brown-200 hover:text-gz-brown-100">BRACELETS</a>
                         </li>
                         <li class="hidden md:block">
-                            <a class="cursor-pointer text-sm font-medium text-gray-900 hover:text-gray-900/70">EARRINGS</a>
+                            <a class="cursor-pointer text-sm font-medium text-gz-brown-200 hover:text-gz-brown-100">EARRINGS</a>
                         </li>
                         <li class="flex items-center gap-x-4 md:hidden">
                             <button
@@ -91,7 +91,7 @@
                 <hr class="border-gz-brown-300" />
                 <ul class="mx-auto max-w-screen-xl px-4 py-4">
                     <li>
-                    <a class="block cursor-pointer rounded-full p-2 text-center text-sm font-medium hover:bg-gray-900 hover:text-gray-50">HOME</a>
+                    <a href="{{ route('home') }}" class="block cursor-pointer rounded-full p-2 text-center text-sm font-medium hover:bg-gray-900 hover:text-gray-50">HOME</a>
                     </li>
                     <li>
                     <a class="block cursor-pointer rounded-full p-2 text-center text-sm font-medium hover:bg-gray-900 hover:text-gray-50">RINGS</a>
@@ -114,7 +114,7 @@
 
         <footer aria-label="Site Footer" class="bg-gz-brown-300">
             <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-                <img class="h-12 w-auto mx-auto object-contain" src="{{ asset('frontend/images/gz 2.png') }}" alt="logo" />
+                <a href=""></a><img class="h-12 w-auto mx-auto object-contain" src="{{ asset('frontend/images/gz 2.png') }}" alt="logo" />
                 {{-- <div class="mx-auto mt-6 w-full text-center leading-relaxed text-gray-800 font-ridley">Accessorize your look with a bold statement necklace or add some stackable rings and bracelets to your arm candy.</div> --}}
                 <nav aria-label="Footer Nav" class="mt-12">
                 <ul class="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12 font-ridley">
@@ -173,11 +173,17 @@
                     </a>
                 </li>
                 </ul>
-                <div class="mx-auto mt-12 w-full text-center leading-relaxed text-gray-800">&copy; 2022 All right reserved</div>
-            </div>
-            
+                <div class="mx-auto mt-12 w-full text-center leading-relaxed text-gray-800">&copy; 2024 All right reserved</div>
+            </div>          
         </footer>
-
+        <script>
+            function toggleMiniCart() {
+                document.getElementById('mini-cart-container').classList.toggle('invisible');
+                document.getElementById('mini-cart-bg').classList.toggle('opacity-0');
+                document.getElementById('mini-cart-bg').classList.toggle('opacity-50');
+                document.getElementById('mini-cart').classList.toggle('translate-x-full');
+                }
+        </script>
         <script src="//unpkg.com/alpinejs" defer></script>
     </body>
 </html>
