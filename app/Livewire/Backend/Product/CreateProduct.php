@@ -39,6 +39,6 @@ class CreateProduct extends Component
 
         $this->reset();
          
-        return $this->redirect('/admin/products');
+        return $this->redirect('/admin/products/index');
     }
 }

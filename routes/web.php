@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [UserController::class,'index'])->name('home');
-Route::get('/{category}/{product:slug}',[UserController::class,'productDetails'])->name('product.details');
+Route::get('/{category:slug}/{product:slug}',[UserController::class,'productDetails'])->name('product.details');
 Route::get('/cart',[UserController::class,'cart'])->name('cart');
 Route::get('/checkout',[UserController::class,'checkout'])->name('checkout');
 Route::get('/thank-you',[UserController::class,'thankYou'])->name('thank-you');

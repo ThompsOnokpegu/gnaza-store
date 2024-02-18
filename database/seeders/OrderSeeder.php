@@ -17,8 +17,7 @@ class OrderSeeder extends Seeder
      */
     public function run(): void{
         $user = User::create([
-            'first_name' => 'Thompson',
-            'last_name' => 'Alfred',
+            'name' => 'Thompson Alfred',
             'email' => 'thompson@gmail.com',
             'address' => '234 Sam Drive, Abuja',
             'city' => 'Abuja',

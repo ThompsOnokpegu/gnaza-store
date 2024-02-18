@@ -30,7 +30,7 @@
         <!--product row 1-->
         <div class="grid grid-cols-1 gap-4 lg:gap-4 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div class="w-full">
-                <div class="p-4 text-center bg-white rounded shadow dark:bg-gray-700">
+                <div class="p-4 text-center bg-white rounded shadow">
                     <div class="block mb-2" href="#">
                         <div class="relative overflow-hidden">
                             <div class="mb-5 overflow-hidden">
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div class="w-full">
-                <div class="p-4 text-center bg-white rounded shadow dark:bg-gray-700">
+                <div class="p-4 text-center bg-white rounded shadow">
                     <div class="block mb-2" href="#">
                         <div class="relative overflow-hidden">
                             <div class="mb-5 overflow-hidden">
@@ -86,7 +86,7 @@
                 </div>
             </div>
             <div class="w-full">
-                <div class="p-4 text-center bg-white rounded shadow dark:bg-gray-700">
+                <div class="p-4 text-center bg-white rounded shadow">
                     <div class="block mb-2" href="#">
                         <div class="relative overflow-hidden">
                             <div class="mb-5 overflow-hidden">
@@ -114,7 +114,7 @@
                 </div>
             </div>
             <div class="w-full">
-                <div class="p-4 text-center bg-white rounded shadow dark:bg-gray-700">
+                <div class="p-4 text-center bg-white rounded shadow">
                     <div class="block mb-2" href="#">
                         <div class="relative overflow-hidden">
                             <div class="mb-5 overflow-hidden">
@@ -145,7 +145,7 @@
         <!--product row 2-->
         <div class="grid grid-cols-1 gap-4 lg:gap-4 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4 pt-5">
             <div class="w-full">
-                <div class="p-4 text-center bg-white rounded shadow dark:bg-gray-700">
+                <div class="p-4 text-center bg-white rounded shadow">
                     <div class="block mb-2" href="#">
                         <div class="relative overflow-hidden">
                             <div class="mb-5 overflow-hidden">
@@ -173,7 +173,7 @@
                 </div>
             </div>
             <div class="w-full">
-                <div class="p-4 text-center bg-white rounded shadow dark:bg-gray-700">
+                <div class="p-4 text-center bg-white rounded shadow">
                     <div class="block mb-2" href="#">
                         <div class="relative overflow-hidden">
                             <div class="mb-5 overflow-hidden">
@@ -201,7 +201,7 @@
                 </div>
             </div>
             <div class="w-full">
-                <div class="p-4 text-center bg-white rounded shadow dark:bg-gray-700">
+                <div class="p-4 text-center bg-white rounded shadow">
                     <div class="block mb-2" href="#">
                         <div class="relative overflow-hidden">
                             <div class="mb-5 overflow-hidden">
@@ -229,7 +229,7 @@
                 </div>
             </div>
             <div class="w-full">
-                <div class="p-4 text-center bg-white rounded shadow dark:bg-gray-700">
+                <div class="p-4 text-center bg-white rounded shadow">
                     <div class="block mb-2" href="#">
                         <div class="relative overflow-hidden">
                             <div class="mb-5 overflow-hidden">

@@ -12,7 +12,7 @@
                             <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path>
                         </svg>
                     </a> --}}
-                    <img class="object-contain w-full lg:h-full" src="{{ asset('frontend/images/look-3-1.jpg') }}" alt="">
+                    <img class="object-contain w-full lg:h-full" src="{{ env('BASE_URL').$product->product_image }}" alt="">
                     {{-- <a class="absolute right-0 transform lg:mr-2 top-1/2 translate-1/2" href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-5 h-5 text-yellow-500 bi bi-chevron-right dark:text-yellow-200" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
@@ -22,22 +22,22 @@
                     <div class="flex-wrap hidden -mx-2 md:flex">
                     <div class="w-1/2 p-2 sm:w-1/4">
                         <a class="block border border-gz-brown-300 hover:border-yellow-400 dark:border-gray-700 dark:hover:border-yellow-300" href="#">
-                        <img class="object-contain w-full lg:h-28" src="{{ asset('frontend/images/look-3-1.jpg') }}" alt="">
+                        <img class="object-contain w-full lg:h-28" src="{{ env('BASE_URL').$product->product_image }}" alt="">
                         </a>
                     </div>
                     <div class="w-1/2 p-2 sm:w-1/4">
                         <a class="block border border-gz-brown-300 hover:border-yellow-400 dark:border-gray-700 dark:hover:border-yellow-300" href="#">
-                        <img class="object-contain w-full lg:h-28" src="{{ asset('frontend/images/look-3-1.jpg') }}" alt="">
+                        <img class="object-contain w-full lg:h-28" src="{{ env('BASE_URL').$product->product_image }}" alt="">
                         </a>
                     </div>
                     <div class="w-1/2 p-2 sm:w-1/4">
                         <a class="block border border-gz-brown-300 hover:border-yellow-400 dark:border-gray-700 dark:hover:border-yellow-300" href="#">
-                        <img class="object-contain w-full lg:h-28" src="{{ asset('frontend/images/look-3-1.jpg') }}" alt="">
+                        <img class="object-contain w-full lg:h-28" src="{{ env('BASE_URL').$product->product_image }}" alt="">
                         </a>
                     </div>
                     <div class="w-1/2 p-2 sm:w-1/4">
                         <a class="block border border-gz-brown-300 hover:border-yellow-400 dark:border-gray-700 dark:hover:border-yellow-300" href="#">
-                        <img class="object-contain w-full lg:h-28" src="{{ asset('frontend/images/look-3-1.jpg') }}" alt="">
+                        <img class="object-contain w-full lg:h-28" src="{{ env('BASE_URL').$product->product_image }}" alt="">
                         </a>
                     </div>
                     </div>
@@ -49,10 +49,10 @@
                     <span class="px-2.5 py-0.5 text-xs text-gz-brown-200 bg-yellow-100 rounded-xl dark:text-gray-200">New
                     Arrival</span>
                     <h2 class="max-w-xl mt-6 mb-3 text-3xl font-ridley font-semibold leading-normal tracking-wide md:text-3xl">
-                        Gnaza Teardrop Earrings
+                        {{ $product->name }}
                     </h2>
                     <p class="mb-3 font-ridley leading-4 text-sm font-normal text-gz-black-200">
-                        This exquisite bridal set is handcrafted from 18 karat gold for a sophisticated, timeless look. Radiant and luxurious, it's sure to be a treasured heirloom for generations to come. Embrace your special day with refinement and elegance.
+                        {{ $product->description }}
                     </p>
                     <div class="flex flex-wrap items-center mb-6">
                         <ul class="flex mb-4 mr-2 lg:mb-0">
@@ -97,7 +97,7 @@
                         </a>
                     </div>
                     <p class="inline-block text-2xl font-semibold text-gray-700 dark:text-gray-400 ">
-                        <span>₦12500.00</span>
+                        <span>₦{{ $product->regular_price }}</span>
                         <span class="ml-3 text-base font-normal text-gray-500 line-through dark:text-gray-400">₦19500.00</span>
                     </p>
                     </div>
@@ -217,118 +217,41 @@
             <h1 class="text-2xl sm:text-3xl md:text-4xl text-center leading-normal mb-7 font-playfair text-gz-black-200">Customers Also View</h1>
             <!--product row 1-->
             <div class="grid grid-cols-1 gap-4 lg:gap-4 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                <div class="w-full">
-                    <div class="p-4 text-center bg-white rounded shadow">
-                        <div class="block mb-2" href="#">
-                            <div class="relative overflow-hidden">
-                                <div class="mb-5 overflow-hidden">
-                                    <img class="object-cover w-full mx-auto transition-all rounded h-72 hover:scale-110"
-                                        src="{{ asset('frontend/images/look-3-1.jpg') }}"
-                                        alt="">
+                @forelse ($related as $product)
+                    <div class="w-full">
+                        <div class="p-4 text-center bg-white rounded shadow">
+                            <div class="block mb-2" href="#">
+                                <div class="relative overflow-hidden">
+                                    <div class="mb-5 overflow-hidden">
+                                        <img class="object-cover w-full mx-auto transition-all rounded h-72 hover:scale-110"
+                                            src="{{ env('BASE_URL').$product->product_image }}"
+                                            alt="">
+                                    </div>
                                 </div>
+                                @php
+                                    $category = $product->category;
+                                @endphp
+                                <a href="{{ route('product.details',compact('category','product')) }}">
+                                    <h3 class="mb-2 text-xl text-gz-black-200 ">{{ $product->name }}</h3>
+                                </a>
+                                <p class="text-lg font-bold text-gz-black-100">
+                                    <span>₦{{ $product->regular_price }}</span>
+                                </p>
+                                <button
+                                    class="flex items-center justify-center mx-auto mt-4 font-bold text-center text-gz-brown-200 group">
+                                    Add to Cart
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="ml-2 transition-all group-hover:translate-x-2" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                    </svg>
+                                </button>
                             </div>
-                            <a href="#">
-                                <h3 class="mb-2 text-xl text-gz-black-200 "> Nikon Lenses </h3>
-                            </a>
-                            <p class="text-lg font-bold text-gz-black-100">
-                                <span>₦9600</span>
-                            </p>
-                            <button
-                                class="flex items-center justify-center mx-auto mt-4 font-bold text-center text-gz-brown-200 group">
-                                Add to Cart
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="ml-2 transition-all group-hover:translate-x-2" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                                </svg>
-                            </button>
                         </div>
-                    </div>
-                </div>
-                <div class="w-full">
-                    <div class="p-4 text-center bg-white rounded shadow">
-                        <div class="block mb-2" href="#">
-                            <div class="relative overflow-hidden">
-                                <div class="mb-5 overflow-hidden">
-                                    <img class="object-cover w-full mx-auto transition-all rounded h-72 hover:scale-110"
-                                        src="https://i.postimg.cc/sgKB6VR6/ryan-plomp-a-Ctb-RTwu-M-unsplash-1.jpg"
-                                        alt="">
-                                </div>
-                            </div>
-                            <a href="#">
-                                <h3 class="mb-2 text-xl text-gz-black-200"> Nike Shoes </h3>
-                            </a>
-                            <p class="text-lg font-bold text-black text-gz-black-100">
-                                <span>₦12500</span>
-                            </p>
-                            <button
-                                class="flex items-center justify-center mx-auto mt-4 font-bold text-center text-gz-brown-200 group group">
-                                Add to Cart
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="ml-2 transition-all group-hover:translate-x-2" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full">
-                    <div class="p-4 text-center bg-white rounded shadow">
-                        <div class="block mb-2" href="#">
-                            <div class="relative overflow-hidden">
-                                <div class="mb-5 overflow-hidden">
-                                    <img class="object-cover w-full mx-auto transition-all rounded h-72 hover:scale-110"
-                                        src="{{ asset('frontend/images/look-3-1.jpg') }}"
-                                        alt="">
-                                </div>
-                            </div>
-                            <a href="#">
-                                <h3 class="mb-2 text-xl text-gz-black-200 "> Nikon Lenses </h3>
-                            </a>
-                            <p class="text-lg font-bold text-gz-black-100">
-                                <span>₦12500</span>
-                            </p>
-                            <button
-                                class="flex items-center justify-center mx-auto mt-4 font-bold text-center text-gz-brown-200 group">
-                                Add to Cart
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="ml-2 transition-all group-hover:translate-x-2" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full">
-                    <div class="p-4 text-center bg-white rounded shadow">
-                        <div class="block mb-2" href="#">
-                            <div class="relative overflow-hidden">
-                                <div class="mb-5 overflow-hidden">
-                                    <img class="object-cover w-full mx-auto transition-all rounded h-72 hover:scale-110"
-                                        src="{{ asset('frontend/images/look-3-1.jpg') }}"
-                                        alt="">
-                                </div>
-                            </div>
-                            <a href="#">
-                                <h3 class="mb-2 text-xl text-gz-black-200 "> Nikon Lenses </h3>
-                            </a>
-                            <p class="text-lg font-bold text-gz-black-100">
-                                <span>₦12500</span>
-                            </p>
-                            <button
-                                class="flex items-center justify-center mx-auto mt-4 font-bold text-center text-gz-brown-200 group">
-                                Add to Cart
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="ml-2 transition-all group-hover:translate-x-2" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                    </div>    
+                @empty
+                    <div class="w-full text-center">No similar products found!</div>
+                @endforelse
             </div>
         </div>
         <div class="px-4 mx-auto max-w-7xl pt-10">
