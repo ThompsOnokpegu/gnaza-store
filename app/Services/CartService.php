@@ -1,5 +1,5 @@
 <?php
-namespace App\Service;
+namespace App\Services;
 
 use Darryldecode\Cart\Cart;
 use Darryldecode\Cart\CartCondition;
@@ -40,4 +40,6 @@ class CartService extends Cart {
         ));
         $this->condition($condition2);
     }
+
+    
 }

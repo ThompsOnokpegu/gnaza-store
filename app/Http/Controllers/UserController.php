@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Services\CartService;
 use Illuminate\Http\Request;
 
 
 class UserController extends Controller
 {
-    public $cart;
+    protected $mycart;
 
     public function index(){
         return view('frontend.index');
@@ -21,7 +22,9 @@ class UserController extends Controller
     }
 
     public function cart(){
-        return view('frontend.cart');
+        $this->mycart = new CartService();
+        $cart = $this->mycart;
+        return view('frontend.cart',compact('cart'));
     }
 
     public function checkout(){

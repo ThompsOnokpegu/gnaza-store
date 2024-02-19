@@ -5,7 +5,7 @@ namespace App\Livewire\Backend\Product;
 use App\Livewire\Forms\ProductForm;
 use App\Models\Category;
 use App\Models\Product;
-use App\Service\CloudinaryUpload;
+use App\Services\CloudinaryUpload;
 use Livewire\Component;
 use illuminate\Support\Str;
 use Livewire\WithFileUploads;

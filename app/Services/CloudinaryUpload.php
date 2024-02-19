@@ -1,5 +1,5 @@
 <?php
-namespace App\Service;
+namespace App\Services;
 
 use Cloudinary\Api\Admin\AdminApi;
 use illuminate\Support\Str;
