@@ -179,19 +179,9 @@
                     </div>
                     <div class="mb-6 "></div>
                     <div class="flex flex-wrap items-center mb-6">
-                    <div class="mb-4 mr-4 lg:mb-0">
-                        <div class="w-28">
-                            <div class="relative flex flex-row w-full h-10 bg-transparent rounded-lg">
-                                <button class="w-20 h-full text-gz-brown-100 bg-gz-brown-300 outline-none cursor-pointer hover:text-gz-brown-400 hover:bg-gz-brown-200">
-                                <span class="m-auto text-2xl font-thin">-</span>
-                                </button>
-                                <input type="number" class="border-gz-brown-300 flex items-center w-full font-semibold text-center text-gz-brown-100 placeholder-gz-brown-100 bg-gz-brown-400 outline-none focus:outline-none text-md hover:text-black" placeholder="1">
-                                <button class="w-20 h-full text-gz-brown-100 bg-gz-brown-300 outline-none cursor-pointer hover:text-gz-brown-400 hover:bg-gz-brown-200">
-                                <span class="m-auto text-2xl font-thin">+</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    {{-- quantity selection --}}
+                    @livewire('frontend.product-quantity')
+
                     <div class="mb-4 lg:mb-0">
                         <button class="flex items-center justify-center w-full h-10 p-2 mr-4 text-gz-brown-100 border border-gz-brown-300 lg:w-11 hover:text-gray-50">
                             <svg xmlns="http://www.w3.org/2000/svg" class="stroke-gz-brown-300 hover:stroke-gz-brown-200" width="16" height="16" fill="currentColor" class=" bi bi-heart" viewBox="0 0 16 16">
