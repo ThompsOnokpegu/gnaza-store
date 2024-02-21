@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use App\Services\CartService;
 use Illuminate\Http\Request;
@@ -28,11 +29,14 @@ class UserController extends Controller
     }
 
     public function checkout(){
-        return view('frontend.checkout');
+        $this->mycart = new CartService();
+        $cart = $this->mycart;
+        return view('frontend.checkout',compact('cart'));
     }
 
-    public function thankYou(){
-        return view('frontend.thank-you');
+    public function thankYou($reference){
+        $order = Order::where('reference',$reference)->first();
+        return view('frontend.thank-you',compact('order'));
     }
 
     public function shop(){

@@ -24,7 +24,7 @@ Route::get('/', [UserController::class,'index'])->name('home');
 Route::get('/{category:slug}/{product:slug}',[UserController::class,'productDetails'])->name('product.details');
 Route::get('/cart',[UserController::class,'cart'])->name('cart');
 Route::get('/checkout',[UserController::class,'checkout'])->name('checkout');
-Route::get('/thank-you',[UserController::class,'thankYou'])->name('thank-you');
+Route::get('/order/thank-you/{reference}',[UserController::class,'thankYou'])->name('thank-you');
 Route::get('/shop',[UserController::class,'shop'])->name('shop');
 
 
@@ -39,7 +39,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/categories/{category}/delete', [Categories::class,'deleteCategory'])->name('category.destroy');
 });
 Route::prefix('admin')->group(function () {
-    Route::get('/orders',[OrderController::class,'index'])->name('orders');
+    Route::get('/orders/index',[OrderController::class,'index'])->name('orders');
     Route::get('/orders/{order:reference}',[OrderController::class,'details'])->name('order.details');
 });
 

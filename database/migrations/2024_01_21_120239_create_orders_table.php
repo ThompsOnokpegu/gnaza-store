@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->uuid('reference')->unique();
             $table->string('recipient_address');
+            $table->string('recipient_city');
             $table->string('recipient_phone');
             $table->string('recipient_name');
             $table->decimal('discount', 10, 2);
