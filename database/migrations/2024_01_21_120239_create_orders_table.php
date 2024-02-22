@@ -23,7 +23,7 @@ return new class extends Migration
             $table->decimal('shipping')->nullable()->default(null);
             $table->decimal('total')->default(0);
             $table->string('payment_method');
-            $table->enum('order_status', ['Processing', 'Enroute', 'Delivered', 'Canceled']);
+            $table->enum('order_status', ['Processing', 'Enroute', 'Delivered', 'Canceled','Awaiting Payment']);
             $table->enum('payment_status', ['pending','cod','paid','cancelled','refunded']);
             // Add more order-related fields as needed
             $table->timestamps();

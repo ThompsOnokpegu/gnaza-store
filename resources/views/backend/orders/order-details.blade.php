@@ -27,7 +27,6 @@
                             <tr>
                               <th>PRODUCT</th>
                               <th>PRICE</th>
-                              <th>QUANTITY</th>
                               <th>TOTAL</th>
                             </tr>
                           </thead>

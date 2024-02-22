@@ -32,6 +32,15 @@ class OrderController extends Controller
         }
         return $bg_label;
     }
+    public  static function paymentBadge($order_status){
+        $bg_label = '';
+        if($order_status == "paid"){
+            $bg_label = 'bg-label-success';
+        }elseif($order_status == "pending"){
+            $bg_label = 'bg-label-warning';
+        }
+        return $bg_label;
+    }
 
     public function orderTotal($order_id){
         //retrieve order items

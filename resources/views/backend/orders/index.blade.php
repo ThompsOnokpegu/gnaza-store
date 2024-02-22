@@ -22,11 +22,10 @@
                             <table class="table card-table">
                               <thead>
                                 <tr>
-                                  <th>ORDER</th>
+                                  <th>SN</th>
                                   <th>TOTAL</th>
-                                  <th>FEES</th>
-                                  <th>STATUS</th>
-                                  <th>PAYMENT CHANNEL</th>
+                                  <th>ORDER STATUS</th>
+                                  <th>PAYMENT STATUS</th>
                                   <th>CUSTOMER</th>
                                   <th>DATE</th>
                                 </tr>
@@ -37,9 +36,8 @@
                                     <td><a href="{{ route('order.details',$order->reference) }}" style="text-decoration:underline;">{{ '#'.$order->id }}</a></td>
                                     
                                     <td>{{ '₦' . $order->total - $order->discount }}</td>
-                                    <td>{{ '₦' . $order->fees }}</td>
                                     <td><span class="badge {{ App\Http\Controllers\OrderController::statusBadge($order->order_status) }} me-1">{{ $order->order_status }}</span></td>
-                                    <td>{{ $order->payment_method == 'COD' ? 'Cash on Delivery' : $order->payment_method }}</td>
+                                    <td><span class="badge {{ App\Http\Controllers\OrderController::paymentBadge($order->payment_status) }} me-1">{{ strtoupper($order->payment_status) }}</span>via Paystack</td>
                                     <td>{{ $order->recipient_name }}</td>
                                     <td><span class="">{{ $order->created_at->toDayDateTimeString() }}</span></td>
                                 </tr>

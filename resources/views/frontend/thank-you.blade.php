@@ -109,7 +109,7 @@
              </div>
           </div>
           <div class="flex flex-wrap items-center justify-start gap-4 px-4 mt-6 ">
-             <a href="{{ route('home') }}" class="w-full px-4 py-2 text-gz-brown-100 border border-gz-brown-100 rounded-md md:w-auto hover:text-gz-brown-400 hover:bg-gz-brown-100">
+             <a href="{{ route('shop') }}" class="w-full px-4 py-2 text-gz-brown-100 border border-gz-brown-100 rounded-md md:w-auto hover:text-gz-brown-400 hover:bg-gz-brown-100">
              Go back shopping
              </a>
              {{-- <button class="w-full px-4 py-2 bg-gz-brown-100 rounded-md text-gz-brown-400 md:w-auto hover:bg-gz-brown-200">

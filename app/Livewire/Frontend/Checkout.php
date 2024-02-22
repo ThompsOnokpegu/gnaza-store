@@ -136,8 +136,8 @@ class Checkout extends Component
         //cart total
         $amount = str_replace(',','', $this->cart->getTotal());
         //get delivery fee that was applied to the cart
-        $condition = $this->cart->getCondition('Delivery');
-        $shipping = $condition->getValue();
+        $delivery = $this->cart->getCondition('Delivery');
+        $shipping = $delivery->getValue();
            
         
         DB::beginTransaction();
@@ -148,7 +148,7 @@ class Checkout extends Component
             $order->recipient_city = $this->billing_city;
             $order->recipient_phone = $this->billing_phone;
             $order->recipient_name = $this->billing_name;
-            $order->order_status = 'Processing';
+            $order->order_status = 'Awaiting Payment';
             $order->payment_status = $status;
             $order->payment_method = "Paystack";
             $order->discount = 0;
