@@ -9,7 +9,7 @@
           <div class="flex w-full flex-col px-4 py-4">
             <span class="font-semibold">{{ $item->name }}</span>
             <span class="float-right uppercase text-gz-brown-300">from {{ $item->associatedModel->category->name }}</span>
-            <p class="text-lg font-bold">₦{{ $item->price }}</p>
+            <p class="text-lg font-normal">₦{{ $item->price }} <span class="font-semibold text-sm">x {{ $item->quantity }}</span></p>
           </div>
         </div>
         @endforeach
@@ -18,29 +18,29 @@
       <p class="mt-8 text-lg font-medium">Shipping Methods</p>
       <form class="mt-5 grid gap-6">
         <div class="relative">
-          <input class="peer hidden" id="radio_1" type="radio" name="radio" />
+          <input class="peer hidden" id="radio_1" type="radio" name="radio" @if($this->cart->getCondition('Delivery')->getValue() > 0) checked @endif />
           <span class="peer-checked:border-gz-brown-200 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gz-brown-300 bg-white"></span>
           <label wire:click="calculateShipping('door')" class="peer-checked:border-2 peer-checked:border-gz-brown-200 peer-checked:bg-gz-brown-400 flex cursor-pointer select-none rounded-lg border border-gz-brown-300 p-4" for="radio_1">
             <img class="w-10 object-contain" src="{{ asset('frontend/images/door-step.png') }}" alt="" />
             <div class="ml-5">
               <span class="mt-2 font-semibold">Door-Step Delivery</span>
               <p class="text-slate-500 text-sm leading-6">12-24 Hrs within Abuja.</p>
-              @if($shippingCost == $door_step)
-              <p class="text-slate-500 text-sm leading-6">₦{{ $shippingCost }}.00</p>
+              @if($this->cart->getCondition('Delivery')->getValue() > 0)
+              <p class="text-slate-500 text-sm leading-6">₦{{ $this->cart->getCondition('Delivery')->getValue() }}.00</p>
               @endif
             </div>
           </label>
         </div>
         <div class="relative">
-          <input class="peer hidden" id="radio_2" type="radio" name="radio" checked/>
+          <input class="peer hidden" id="radio_2" type="radio" name="radio" @if($this->cart->getCondition('Delivery')->getValue() == 0) checked @endif/>
           <span class="peer-checked:border-gz-brown-200 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gz-brown-300 bg-white"></span>
           <label wire:click="calculateShipping('pickup')" class="peer-checked:border-2 peer-checked:border-gz-brown-200 peer-checked:bg-gz-brown-400 flex cursor-pointer select-none rounded-lg border border-gz-brown-300 p-4" for="radio_2">
             <img class="w-10 object-contain" src="{{ asset('frontend/images/pickup.png') }}" alt="" />
             <div class="ml-5">
               <span class="mt-2 font-semibold">Pickup (10AM - 4PM)</span>
               <p class="text-slate-500 text-sm leading-6">Novare Gateway Mall, Airport Road.</p>
-              @if($shippingCost == $pickup)
-              <p class="text-slate-500 text-sm leading-6">₦{{ $shippingCost }}.00</p>
+              @if($this->cart->getCondition('Delivery')->getValue() == 0)
+              <p class="text-slate-500 text-sm leading-6">₦{{ $this->cart->getCondition('Delivery')->getValue() }}.00</p>
               @endif
             </div>
           </label>
@@ -64,7 +64,7 @@
             @enderror
             <label for="card-holder" class="mt-4 mb-2 block text-sm font-medium">Name</label>
             <div class="relative">
-                <input type="text" id="card-holder" wire:model="billing_name" class="w-full rounded-md border border-gz-brown-300 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-gz-brown-200 focus:ring-gz-brown-300" placeholder="Your full name" />
+                <input type="text" id="card-holder" wire:model="{{ old('billing_name') }}" class="w-full rounded-md border border-gz-brown-300 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-gz-brown-200 focus:ring-gz-brown-300" placeholder="Your full name" />
                 <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                     <img class="h-4 w-4 object-contain" src="{{ asset('frontend/images/name.svg') }}" alt="" />
                 </div>
@@ -120,11 +120,11 @@
             <div class="mt-6 border-t border-b border-gz-brown-300 py-2">
             <div class="flex items-center justify-between">
                 <p class="text-sm font-medium text-gray-900">Products</p>
-                <p class="font-semibold text-gray-900">₦{{ $cart->getSubTotal() }}</p>
+                <p class="font-semibold text-gray-900">₦{{str_replace(',','',$this->cart->getSubTotal()) - $this->cart->getCondition('Delivery')->getValue() }}</p>
             </div>
             <div class="flex items-center justify-between">
                 <p class="text-sm font-medium text-gray-900">Delivery Fee</p>
-                <p class="font-semibold text-gray-900">₦{{ $shippingCost }}</p>
+                <p class="font-semibold text-gray-900">₦{{ $this->cart->getCondition('Delivery')->getValue() }}</p>
             </div>
             </div>
             <div class="mt-6 flex items-center justify-between">

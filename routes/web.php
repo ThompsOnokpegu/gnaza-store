@@ -21,11 +21,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [UserController::class,'index'])->name('home');
-Route::get('/{category:slug}/{product:slug}',[UserController::class,'productDetails'])->name('product.details');
+Route::get('/products/{product:slug}',[UserController::class,'productDetails'])->name('product.details');
 Route::get('/cart',[UserController::class,'cart'])->name('cart');
 Route::get('/checkout',[UserController::class,'checkout'])->name('checkout');
 Route::get('/order/thank-you/{reference}',[UserController::class,'thankYou'])->name('thank-you');
-Route::get('/shop',[UserController::class,'shop'])->name('shop');
+Route::get('/all-products',[UserController::class,'shop'])->name('shop');
+Route::get('/collections/{category}',[UserController::class,'archive'])->name('archive');
 
 
 
@@ -45,6 +46,6 @@ Route::prefix('admin')->group(function () {
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('backend.index');
     })->name('dashboard');
 });

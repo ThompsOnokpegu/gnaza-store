@@ -47,8 +47,8 @@ class Checkout extends Component
         $this->cart = new CartService();
         if($method=='pickup'){
             $conditionName = 'Delivery';
-
             $this->cart->removeCartCondition($conditionName);
+
             $this->shippingCost = $this->pickup;
             $condition1 = new \Darryldecode\Cart\CartCondition(array(
                 'name' => 'Delivery',

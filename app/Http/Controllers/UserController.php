@@ -14,10 +14,11 @@ class UserController extends Controller
     protected $mycart;
 
     public function index(){
-        return view('frontend.index');
+        $products = Product::all();
+        return view('frontend.index',compact('products'));
     }
 
-    public function productDetails($category,Product $product){
+    public function productDetails(Product $product){
         $related = $product->category->products;
         return view('frontend.product-details',compact('product','related'));        
     }
@@ -42,6 +43,18 @@ class UserController extends Controller
     public function shop(){
         $products = Product::all();
         return view('frontend.shop',compact('products'));
+    }
+
+    public function archive($category){
+        $archive = [];
+        $category = Category::where('slug',$category)->first();
+        
+        if($category){
+        
+            $archive = Product::where('category_id',$category->id)->get();
+        }
+  
+        return view('frontend.archive',compact('archive'));
     }
     
 }
