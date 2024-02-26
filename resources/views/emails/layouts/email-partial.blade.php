@@ -1,4 +1,3 @@
-<!doctype html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -9,12 +8,17 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
+        <div class="flex flex-row justify-center bg-gz-brown-400 pt-5 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
+            <a href="{{ route('home') }}">
+               <img class="object-cover h-14" src="{{ asset('frontend/images/gz 3.png') }}" alt="logo" />
+            </a>
+        </div>
 
         @yield('content')
 
         <footer aria-label="Site Footer" class="bg-gz-brown-300">
             <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-                <a href="{{ route('home') }}">
+                <a  href="{{ route('home') }}">
                     <img class="h-12 w-auto mx-auto object-contain" src="{{ asset('frontend/images/gz 2.png') }}" alt="logo" />
                 </a>
                 {{-- <div class="mx-auto mt-6 w-full text-center leading-relaxed text-gray-800 font-ridley">Accessorize your look with a bold statement necklace or add some stackable rings and bracelets to your arm candy.</div> --}}
@@ -53,7 +57,10 @@
                     </a>
                 </li>
                 </ul>
-                <div class="mx-auto mt-12 w-full text-center leading-relaxed text-gray-800">&copy; {{ now()->year }} All right reserved</div>
+                <div class="pt-5 mx-auto w-full text-center leading-relaxed text-gray-800">
+                    <p>This message was sent to tommyriode@gmail.com</p>
+                </div>
+                <div class="mx-auto mt-5 w-full text-center leading-relaxed text-gray-800">{{ now()->year }} &copy; Gnaza Luxe Jewelry. All right reserved</div>
             </div>
             
         </footer>

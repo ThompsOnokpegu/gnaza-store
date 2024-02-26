@@ -6,7 +6,7 @@
 <section style="background-image: url('{{ asset('/frontend/images/look-3-1.jpg') }}')" class="bg-center bg-repeat-x bg-cover bg-gz-brown-300 bg-blend-multiply">
     <div class="px-4 mx-auto max-w-screen-xl text-center py-7 lg:py-18">
         <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Elevate Your <span class=" font-meddon">Everyday!</span></h1>
-        <p class="mb-8 text-lg font-normal font-ridley text-white lg:text-xl sm:px-16 lg:px-48">NECKLACES</p>
+        <p class="mb-8 text-lg font-normal uppercase font-ridley text-white lg:text-xl sm:px-16 lg:px-48">{{ $category_name }}</p>
         <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
             {{-- <a href="#" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
                 Get started

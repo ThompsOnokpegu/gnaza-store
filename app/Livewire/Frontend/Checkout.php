@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Frontend;
 
+use App\Mail\NewOrderNotice;
+use App\Mail\OrderReceived;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\User;
@@ -10,6 +12,7 @@ use App\Services\Paystack;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Ramsey\Uuid\Uuid;
@@ -18,8 +21,10 @@ class Checkout extends Component
 {
     protected $cart;
     public $door_step = 2700;
-    public $pickup = 0;
+    public $pick = 0;
     public $shippingCost = 0;
+    public $delivery;
+    public $pickup;
     #[Validate('required')]
     #[Validate('email')]
     public $billing_email;
@@ -43,17 +48,37 @@ class Checkout extends Component
         ->extends('frontend.layouts.checkout-partial');
     }
 
+    public function mount(){
+        $this->cart = new CartService();
+       
+        //check whether cart is empty
+        if($this->cart->getContent()->count() == 0){
+            //redirect to cart page
+            return redirect()->route('cart');
+        }
+
+         //set default shipping to pickup
+         $condition1 = new \Darryldecode\Cart\CartCondition(array(
+            'name' => 'Delivery',
+            'type' => 'shipping',
+            'target' => 'total', // this condition will be applied to cart's total when getTotal() is called.
+            'value' => '+0',
+            'order' => 1
+        ));
+        $this->cart->condition($condition1);
+    }
+
     public function calculateShipping($method){
         $this->cart = new CartService();
         if($method=='pickup'){
             $conditionName = 'Delivery';
             $this->cart->removeCartCondition($conditionName);
 
-            $this->shippingCost = $this->pickup;
+            $this->shippingCost = $this->pick;
             $condition1 = new \Darryldecode\Cart\CartCondition(array(
                 'name' => 'Delivery',
                 'type' => 'shipping',
-                'target' => 'subtotal', // this condition will be applied to cart's subtotal when getSubTotal() is called.
+                'target' => 'total', // this condition will be applied to cart's subtotal when getSubTotal() is called.
                 'value' => '+0',
                 'order' => 1
             ));
@@ -68,7 +93,7 @@ class Checkout extends Component
             $condition1 = new \Darryldecode\Cart\CartCondition(array(
                 'name' => 'Delivery',
                 'type' => 'shipping',
-                'target' => 'subtotal', // this condition will be applied to cart's subtotal when getSubTotal() is called.
+                'target' => 'total', // this condition will be applied to cart's subtotal when getSubTotal() is called.
                 'value' => '+'.$this->door_step,
                 'order' => 1
             ));
@@ -78,10 +103,10 @@ class Checkout extends Component
     }
 
     public function placeOrder(){
-      
         //validate billing details
         $this->validate();
 
+        
         //create user
         $user = $this->createUser();
 
@@ -91,6 +116,10 @@ class Checkout extends Component
         //get payment link
         $paystack = new Paystack();
         $payment_link = $paystack->getPaymentLink($user,$order);
+        
+        //New order Email is triggered in Webhook charge.success  
+        // Mail::to($user->email)->send(new OrderReceived($order));
+        // Mail::to('care@gnaza.com')->send(new NewOrderNotice($order));
 
         //clear cart
         $this->cart->clear();
@@ -102,7 +131,6 @@ class Checkout extends Component
             return session()->flash('message','Connection failed: try again later!');
         }
          
-        //New order event is triggered in Webhook charge.success  
     }
 
     public function createUser(){
@@ -165,6 +193,7 @@ class Checkout extends Component
             foreach($cartItems as $item){
                 OrderItem::create([
                     'order_id' => $order->id,
+                    'product_id' => $item->id,
                     'name' => $item->name,
                     'price' => $item->price,
                     'quantity' =>$item->quantity,

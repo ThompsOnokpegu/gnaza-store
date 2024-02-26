@@ -2,7 +2,7 @@
     <div class="px-4 pt-8">
       <p class="text-xl font-medium">Order Summary</p>
       <p class="text-gray-400">Check your items. And select a suitable shipping method.</p>
-      <div class="mt-8 space-y-3 rounded-lg border border-gz-brown-300 px-2 py-4 sm:px-6">
+      <div wire:loading.class="opacity-50" class="mt-8 space-y-3 rounded-lg border border-gz-brown-300 px-2 py-4 sm:px-6">
         @foreach($cart->getContent() as $item)
         <div class="flex flex-row rounded-lg">
           <img class="m-2 h-24 w-28 rounded-md object-cover object-center" src="{{ env('BASE_URL').$item->associatedModel->product_image }}" alt="" />
@@ -16,21 +16,7 @@
       </div>
   
       <p class="mt-8 text-lg font-medium">Shipping Methods</p>
-      <form class="mt-5 grid gap-6">
-        <div class="relative">
-          <input class="peer hidden" id="radio_1" type="radio" name="radio" @if($this->cart->getCondition('Delivery')->getValue() > 0) checked @endif />
-          <span class="peer-checked:border-gz-brown-200 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gz-brown-300 bg-white"></span>
-          <label wire:click="calculateShipping('door')" class="peer-checked:border-2 peer-checked:border-gz-brown-200 peer-checked:bg-gz-brown-400 flex cursor-pointer select-none rounded-lg border border-gz-brown-300 p-4" for="radio_1">
-            <img class="w-10 object-contain" src="{{ asset('frontend/images/door-step.png') }}" alt="" />
-            <div class="ml-5">
-              <span class="mt-2 font-semibold">Door-Step Delivery</span>
-              <p class="text-slate-500 text-sm leading-6">12-24 Hrs within Abuja.</p>
-              @if($this->cart->getCondition('Delivery')->getValue() > 0)
-              <p class="text-slate-500 text-sm leading-6">₦{{ $this->cart->getCondition('Delivery')->getValue() }}.00</p>
-              @endif
-            </div>
-          </label>
-        </div>
+      <form wire:loading.class="opacity-50" class="mt-5 grid gap-6">
         <div class="relative">
           <input class="peer hidden" id="radio_2" type="radio" name="radio" @if($this->cart->getCondition('Delivery')->getValue() == 0) checked @endif/>
           <span class="peer-checked:border-gz-brown-200 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gz-brown-300 bg-white"></span>
@@ -45,10 +31,24 @@
             </div>
           </label>
         </div>
-        
+        <div class="relative">
+          <input class="peer hidden" id="radio_1" type="radio" name="radio" @if($cart->getCondition('Delivery')->getValue() > 0) checked @endif />
+          <span class="peer-checked:border-gz-brown-200 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gz-brown-300 bg-white"></span>
+          <label wire:click="calculateShipping('door')" class="peer-checked:border-2 peer-checked:border-gz-brown-200 peer-checked:bg-gz-brown-400 flex cursor-pointer select-none rounded-lg border border-gz-brown-300 p-4" for="radio_1">
+            <img class="w-10 object-contain" src="{{ asset('frontend/images/door-step.png') }}" alt="" />
+            <div class="ml-5">
+              <span class="mt-2 font-semibold">Door-Step Delivery</span>
+              <p class="text-slate-500 text-sm leading-6">12-24 Hrs within Abuja.</p>
+              @if($this->cart->getCondition('Delivery')->getValue() > 0)
+              <p class="text-slate-500 text-sm leading-6">₦{{ $this->cart->getCondition('Delivery')->getValue() }}.00</p>
+              @endif
+            </div>
+          </label>
+        </div>
       </form>
+      
     </div>
-    <div class="mt-10 bg-gz-brown-400 px-4 pt-8 lg:mt-0 rounded-l shadow items-center">
+    <div wire:loading.class="opacity-50" class="mt-10  px-4 pt-8 lg:mt-0 rounded-l items-center">
         <p class="text-xl font-medium">Delivery Details</p>
         <p class="text-gray-400">Complete your order by providing your delivery details.</p>
         <div class="">
@@ -64,7 +64,7 @@
             @enderror
             <label for="card-holder" class="mt-4 mb-2 block text-sm font-medium">Name</label>
             <div class="relative">
-                <input type="text" id="card-holder" wire:model="{{ old('billing_name') }}" class="w-full rounded-md border border-gz-brown-300 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-gz-brown-200 focus:ring-gz-brown-300" placeholder="Your full name" />
+                <input type="text" id="card-holder" wire:model="billing_name" class="w-full rounded-md border border-gz-brown-300 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-gz-brown-200 focus:ring-gz-brown-300" placeholder="Your full name" />
                 <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                     <img class="h-4 w-4 object-contain" src="{{ asset('frontend/images/name.svg') }}" alt="" />
                 </div>
@@ -120,7 +120,7 @@
             <div class="mt-6 border-t border-b border-gz-brown-300 py-2">
             <div class="flex items-center justify-between">
                 <p class="text-sm font-medium text-gray-900">Products</p>
-                <p class="font-semibold text-gray-900">₦{{str_replace(',','',$this->cart->getSubTotal()) - $this->cart->getCondition('Delivery')->getValue() }}</p>
+                <p class="font-semibold text-gray-900">₦{{$this->cart->getSubTotal() }}</p>
             </div>
             <div class="flex items-center justify-between">
                 <p class="text-sm font-medium text-gray-900">Delivery Fee</p>
@@ -132,7 +132,8 @@
             <p class="text-2xl font-semibold text-gray-900">₦{{ $cart->getTotal() }}</p>
             </div>
         </div>
-        <button wire:click="placeOrder" class="mt-4 mb-8 w-full bg-gz-brown-100 px-6 py-3 font-medium text-white">Place Order</button>
+        <button wire:click="placeOrder" wire:loading.class="opacity-50" wire:loading.attr="disabled" class="mt-4 mb-8 w-full bg-gz-brown-100 px-6 py-3 font-medium text-white">Place Order </button>
+        
         <div class="flex justify-center mb-4 ">
             <a href="#">
             <img src="{{ asset('frontend/images/discover.svg') }}" alt="" class="object-cover h-8 mr-2">

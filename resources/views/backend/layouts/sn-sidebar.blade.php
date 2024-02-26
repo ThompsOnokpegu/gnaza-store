@@ -126,9 +126,9 @@
         </a>
       </li>
       <li class="menu-header small text-uppercase">
-        <form method="POST" action="#">
+        <form method="POST" action="{{ route('logout') }}">
           @csrf
-          <a class="menu-link" href="#"
+          <a class="menu-link" href="{{ route('logout') }}"
           onclick="event.preventDefault();
                       this.closest('form').submit();">
             <i class="bx bx-power-off me-2"></i>

@@ -44,7 +44,9 @@ export default {
             'gz-danger-bg':'#FFC1CB',
             'gz-success':'#6CBC72',
             'gz-success-bg':'#E5FDE2',
-            'gz-black-900':'#999999',
+            'gz-black-900':'#efefef',
+            'gz-warning':'#17C8EE',
+            'gz-warning-bg':'#D7F5FC',
         }
     },
 

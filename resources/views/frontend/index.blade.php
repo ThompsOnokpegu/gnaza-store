@@ -50,9 +50,9 @@
                     <img src="{{ asset('frontend/images/look-3-1.jpg') }}" alt="Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant." class="h-full w-full object-cover object-center">
                     </div>
                     <h3 class="mt-6 text-sm text-gray-500">
-                    <a href="#" class="font-ridley  uppercase" >
+                    <a href="{{ route('archive',['category'=>'jewelry-set']) }}" class="font-ridley  uppercase" >
                         <span class="absolute inset-0"></span>
-                        Necklaces
+                        Matching Set
                     </a>
                     </h3>
                     <p class="text-base font-semibold font-ridley text-gray-900">Elegant neck adornments.</p>
@@ -62,7 +62,7 @@
                     <img src="{{ asset('frontend/images/gnaza jewelry set.webp') }}" alt="Collection of four insulated travel bottles on wooden shelf." class="h-full w-full object-cover object-center">
                     </div>
                     <h3 class="mt-6 text-sm text-gray-500">
-                    <a href="#" class="font-ridley  uppercase">
+                    <a href="{{ route('archive',['category'=>'earrings']) }}" class="font-ridley  uppercase">
                         <span class="absolute inset-0"></span>
                         Earrings
                     </a>

@@ -154,7 +154,7 @@
                     </a>
                 </li>
                 </ul>
-                <div class="mx-auto mt-12 w-full text-center leading-relaxed text-gray-800">&copy; 2024 All right reserved</div>
+                <div class="mx-auto mt-12 w-full text-center leading-relaxed text-gray-800">&copy; {{ now()->year }} All right reserved</div>
             </div>          
         </footer>
         <script>

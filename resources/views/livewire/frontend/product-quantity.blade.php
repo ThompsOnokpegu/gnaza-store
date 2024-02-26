@@ -175,7 +175,7 @@
     </a>
     </div>
     <div class="flex gap-4 mb-6">
-    <a href="{{ route('cart') }}" wire:click="buyNow" class="w-full px-4 py-3 text-center text-white bg-gz-brown-200 border border-transparent hover:border-yellow-500 hover:text-gz-brown-400 hover:bg-gz-brown-100">
+    <a wire:navigate href="{{ route('cart') }}" class="w-full px-4 py-3 text-center text-white bg-gz-brown-200 border border-transparent hover:border-yellow-500 hover:text-gz-brown-400 hover:bg-gz-brown-100">
     Review Your Cart</a>
     </div>
 </div>

@@ -30,7 +30,7 @@
                 @php
                     $category = $product->category;
                 @endphp
-                <a href="{{ route('product.details',compact('category','product',)) }}">
+                <a href="{{ route('product.details',compact('product',)) }}">
                     <div class="w-full">
                         <div class="p-4 text-center bg-white rounded shadow">
                             <div class="block mb-2">

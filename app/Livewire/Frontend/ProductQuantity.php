@@ -39,7 +39,7 @@ class ProductQuantity extends Component
         // array format
         if($this->quantity > 0){
             $this->cart->add(array(
-                'id' => $this->product->id.'_'.$this->product->sku, // inique row ID
+                'id' => $this->product->id, // inique row ID
                 'name' => $this->product->name,
                 'price' => $this->product->regular_price,
                 'quantity' => $this->quantity,

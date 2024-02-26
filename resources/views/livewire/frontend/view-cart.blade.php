@@ -79,6 +79,11 @@
             <div class="text-center py-5">
                 <p>Your jewelry box is empty!</p>
             </div>
+            <div class="my-6 text-center">
+                <a wire:navigate href="{{ route('shop') }}" type="button" class="group inline-flex w-full items-center justify-center border border-gz-brown-100 px-6 py-4 text-lg font-semibold text-gz-brown-100 transition-all duration-200 ease-in-out focus:shadow hover:bg-gz-brown-200 hover:text-white hover:border-none">
+                    Continue Shopping
+                </a>
+            </div>
         @endif
     </div>
   </div>

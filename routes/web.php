@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -7,6 +8,8 @@ use App\Livewire\Backend\Category\AddCategory;
 use App\Livewire\Backend\Category\Categories;
 use App\Livewire\Backend\Product\CreateProduct;
 use App\Livewire\Backend\Product\UpdateProduct;
+use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,25 +30,28 @@ Route::get('/checkout',[UserController::class,'checkout'])->name('checkout');
 Route::get('/order/thank-you/{reference}',[UserController::class,'thankYou'])->name('thank-you');
 Route::get('/all-products',[UserController::class,'shop'])->name('shop');
 Route::get('/collections/{category}',[UserController::class,'archive'])->name('archive');
+//PREVIEW EMAILS
+Route::get('/email',function(){
+    $order = Order::find(9);
+    $order_items = OrderItem::where('order_id',$order->id)->get();
+    return view('emails.new-order-notice',compact('order','order_items'));
+});
 
 
+Route::prefix('/admin')->middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])->group(function () {
+    
+    Route::get('/dashboard', function(){
+        return view('backend.index');
+    })->name('dashboard');
+    //Route::post('/logout',[AdminController::class,'logout'])->name('logout');
 
-
-Route::prefix('admin')->group(function () {
     Route::get('/products/index',[ProductController::class,'index'])->name('products');
     Route::get('/products/{product:slug}/delete', [ProductController::class,'destroy'])->name('product.destroy');
     Route::get('/products/{product:slug}/edit', UpdateProduct::class)->name('product.edit');//livewire
     Route::get('/products/create', CreateProduct::class)->name('product.create');//livewire
     Route::get('/categories/index', AddCategory::class)->name('product.categories');
     Route::get('/categories/{category}/delete', [Categories::class,'deleteCategory'])->name('category.destroy');
-});
-Route::prefix('admin')->group(function () {
+
     Route::get('/orders/index',[OrderController::class,'index'])->name('orders');
     Route::get('/orders/{order:reference}',[OrderController::class,'details'])->name('order.details');
-});
-
-Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('backend.index');
-    })->name('dashboard');
 });

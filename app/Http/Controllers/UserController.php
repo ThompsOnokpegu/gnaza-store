@@ -46,15 +46,30 @@ class UserController extends Controller
     }
 
     public function archive($category){
-        $archive = [];
+        $archive = []; //default category products
+        $category_name = '';//default category
         $category = Category::where('slug',$category)->first();
-        
+    
         if($category){
-        
             $archive = Product::where('category_id',$category->id)->get();
+            $category_name = $category->name;
         }
   
-        return view('frontend.archive',compact('archive'));
+        return view('frontend.archive',compact('archive','category_name'));
+    }
+
+    public  static function statusBadge($order_status){
+        $bg_label = '';
+        if($order_status == "Processing"){
+            $bg_label = 'bg-label-primary';
+        }elseif($order_status == "Delivered")
+            $bg_label = 'bg-label-success';
+        elseif($order_status == "Canceled"){
+            $bg_label = 'bg-label-danger';
+        }else{
+            $bg_label = 'text-gz-warning';
+        }
+        return $bg_label;
     }
     
 }

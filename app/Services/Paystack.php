@@ -2,11 +2,14 @@
 
 namespace App\Services;
 
+use App\Mail\NewOrderNotice;
+use App\Mail\OrderReceived;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Throwable;
 
 class Paystack {
@@ -150,7 +153,8 @@ class Paystack {
                         $order->payment_status = 'paid';
                         $order->save();
                         //trigger new order event
-                        //TODO: OrderSuccessful::dispatch($order);
+                        Mail::to($order->user->email)->send(new OrderReceived($order));
+                        Mail::to('care@gnaza.com')->send(new NewOrderNotice($order));
                     }
                     break;
             }
