@@ -1,7 +1,7 @@
 @extends('frontend.layouts.main')
 
 @section('content')
-<header class="bg-gradient-to-br from-gz-brown-400 to-gz-brown-300 bg-gz-brown-400 py-10">
+<header class="bg-gradient-to-tl from-gz-gray-400 to-gz-gray-300 bg-gz-brown-400 py-10">
     <div class="mx-auto max-w-screen-xl px-8">
         <div class="grid grid-cols-12 items-center">
             <div class="col-span-12 sm:col-span-5 sm:hidden">
@@ -24,7 +24,7 @@
         </div>
     </div>
 </header>
-<section class="flex items-center bg-gz-brown-400 flex-col pt-15 pb-24 z-1">
+<section class="flex items-center bg-white flex-col pt-15 pb-24 z-1">
     
     <div class="px-4 mx-auto max-w-7xl">
         <div class="bg-gray-100">
@@ -32,7 +32,7 @@
             <div class="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
                 <p class="font-ridley text-center font-semibold uppercase text-lg">Welcome to Gnaza</p>
                 <h2 class="text-6xl font-thin font-ridley text-center text-gray-900">Shop Collections</h2>
-                <div class="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0 z-1">
+                <div class="mt-6 space-y-12 lg:grid lg:grid-cols-2 lg:gap-x-6 lg:space-y-0 z-1">
                     <div class="group relative z-1">
                         <div class="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
                         <img src="{{ asset('frontend/images/gold-bracelet.webp') }}" alt="Gnaza Jewelry Gold Bracelet Collections." class="h-full w-full object-cover object-center">
