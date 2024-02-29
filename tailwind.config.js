@@ -22,6 +22,7 @@ export default {
                 ridley:['Ridley Grotesk'],
                 chewy: ['Chewy', 'sans-serif'],
                 roboto:['Roboto','sans-serif'],
+                archivo:['Archivo']
              
             },
         },

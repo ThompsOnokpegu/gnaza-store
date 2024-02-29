@@ -6,40 +6,40 @@
         <link rel="stylesheet" href="{{ asset('frontend/styless.min.css') }}">
         <link href="https://fonts.cdnfonts.com/css/ridley-grotesk" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Meddon&family=Montserrat:wght@300;400;600;700&family=Playfair+Display&display=swap">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
-        <header class="bg-white dark:bg-gray-900">
-            <nav x-data="{ isOpen: false }" class="relative bg-white dark:bg-gray-900">
-                <div class="container px-6 lg:px-16 py-4 mx-auto md:flex md:justify-between md:items-center">
+        <header class="bg-white dark:bg-gray-900 sticky top-0 shadow z-50">
+            <nav x-data="{ isOpen: false }" class="bg-white dark:bg-gray-900">
+                <div class="container px-2 lg:px-16 py-4 mx-auto md:flex md:justify-between md:items-center">
                     <div class="flex items-center justify-between">
                         <div class="flex md:hidden">
                             <button x-cloak @click="isOpen = !isOpen" type="button" class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu">
-                                <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                {{-- <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
-                                </svg>
-
-                                <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                    stroke-width="2">
+                                </svg> --}}
+                                <svg x-show="!isOpen" class="w-7 h-7" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m3.5 7c-.27614237 0-.5-.22385763-.5-.5s.22385763-.5.5-.5h17c.2761424 0 .5.22385763.5.5s-.2238576.5-.5.5zm0 5c-.27614237 0-.5-.2238576-.5-.5s.22385763-.5.5-.5h17c.2761424 0 .5.2238576.5.5s-.2238576.5-.5.5zm0 5c-.27614237 0-.5-.2238576-.5-.5s.22385763-.5.5-.5h17c.2761424 0 .5.2238576.5.5s-.2238576.5-.5.5z"/></svg>
+                                <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                    stroke-width="1">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </button>
                             
                         </div>
                         <a href="#">
-                            <img class="w-auto h-6 sm:h-7" src="https://merakiui.com/images/full-logo.svg" alt="">
+                            <img class="w-auto h-11" src="{{ asset('frontend/images/gnaza-logo-black.png') }}" alt="">
                         </a>
             
                         <!-- Mobile menu button -->
                         <div class="flex md:hidden">
                             
                             <div class="flex justify-center md:block">
-                                <a class="relative text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300" href="#">
-                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                
-                                    <span class="absolute top-0 left-0 p-1 text-xs text-white bg-blue-500 rounded-full"></span>
+                                <a class="relative transition-colors duration-300 transform hover:text-gray-600" href="#">
+                                    <svg class="h-7 w-7" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="m11 3a3 3 0 0 0 -3 3h-3v1 11 1h12v-1-11-1h-3a3 3 0 0 0 -3-3zm0 1a2 2 0 0 1 2 2h-4a2 2 0 0 1 2-2zm-5 3h2v1.0878906a1.5 1.5 0 0 0 -1 1.4121094 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0 -1-1.4121094v-1.0878906h4v1.0878906a1.5 1.5 0 0 0 -1 1.4121094 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0 -1-1.4121094v-1.0878906h2v11h-10zm2.5 2a.5.5 0 0 1 .5.5.5.5 0 0 1 -.5.5.5.5 0 0 1 -.5-.5.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5.5.5 0 0 1 -.5.5.5.5 0 0 1 -.5-.5.5.5 0 0 1 .5-.5z" fill="#232629"/></svg>
+                                    <span class="absolute top-0 left-0 p-1 text-xs bg-gz-brown-300 bg-blue-500 rounded-full"></span>
                                 </a>
                             </div>
                         </div>
@@ -48,17 +48,17 @@
                     <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
                     <div x-cloak :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']" class="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white dark:bg-gray-900 md:bg-transparent md:dark:bg-transparent md:mt-0 md:p-0 md:top-0 md:relative md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center">
                         <div class="flex flex-col md:flex-row md:mx-6">
-                            <a class="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Home</a>
-                            <a class="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Shop</a>
-                            <a class="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Contact</a>
-                            <a class="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">About</a>
+                            <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="#">Matching Set</a>
+                            <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="#">Necklaces</a>
+                            {{-- <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="#">Rings</a>
+                            <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="#">Watches</a> --}}
+                            <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="#">Bracelets</a>
+                            <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="#">Earrings</a>
                         </div>
             
                         <div class="flex justify-center md:block">
                             <a class="hidden md:block relative text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300" href="#">
-                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
+                                <svg class="h-7 w-7" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="m11 3a3 3 0 0 0 -3 3h-3v1 11 1h12v-1-11-1h-3a3 3 0 0 0 -3-3zm0 1a2 2 0 0 1 2 2h-4a2 2 0 0 1 2-2zm-5 3h2v1.0878906a1.5 1.5 0 0 0 -1 1.4121094 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0 -1-1.4121094v-1.0878906h4v1.0878906a1.5 1.5 0 0 0 -1 1.4121094 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0 -1-1.4121094v-1.0878906h2v11h-10zm2.5 2a.5.5 0 0 1 .5.5.5.5 0 0 1 -.5.5.5.5 0 0 1 -.5-.5.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5.5.5 0 0 1 -.5.5.5.5 0 0 1 -.5-.5.5.5 0 0 1 .5-.5z" fill="#232629"/></svg>
             
                                 <span class="absolute top-0 left-0 p-1 text-xs text-white bg-blue-500 rounded-full"></span>
                             </a>
@@ -66,40 +66,82 @@
                     </div>
                 </div>
             </nav>
-
-            <div class="container px-6 lg:px-16 py-16 mx-auto">
-                <div class="items-center flex">
-                    <div class="w-full lg:w-1/2">
-                        <div class="lg:max-w-lg">
-                            <h1 class="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">Best place to choose <br> your <span class="text-blue-500 ">clothes</span></h1>
+        </header>
+        <section class="bg-white dark:bg-gray-900 z-0">
+            <div class="container mx-auto">
+                <div class="items-center flex flex-col-reverse lg:px-16">
+                    <div class="w-full items-center justify-center mt-6">
+                        <div class="text-center mx-3">
+                            <h1 class="text-xl font-semibold font-montserrat  tracking-wide text-gray-800 dark:text-white lg:text-2xl uppercase">Elevate Your Everyday</h1>
                             
-                            <p class="mt-3 text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro beatae error laborum ab amet sunt recusandae? Reiciendis natus perspiciatis optio.</p>
+                            <p class="mt-3 text-sm text-gray-600 font-normal font-montserrat tracking-wider">Accessorize your look with a bold statement necklace or add some
+                                stackable rings and bracelets to your arm candy.</p>
                             
-                            <button class="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-blue-600 rounded-lg lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">Shop Now</button>
+                            <button class="w-full px-5 underline py-2 text-md font-montserrat tracking-wider text-black transition-colors duration-300 transform bg-blue-600 rounded-lg lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">Shop Gnaza Collection</button>
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
-                        <img class="w-full h-full lg:max-w-3xl" src="https://merakiui.com/images/components/Catalogue-pana.svg" alt="Catalogue-pana.svg">
+                    <div class="flex items-center justify-center w-full mt-0">
+                        <img class="w-full h-full" src="{{ asset('frontend/images/01_HOMEPAGE_TRINITY_BANNER_2560x996.jpg') }}" alt="Catalogue-pana.svg">
                     </div>
                 </div>
             </div>
-        </header>
-        <section class="bg-white dark:bg-gray-900">
-            <div class="container px-6 lg:px-16 py-16 mx-auto">
-                <div class="items-center lg:flex">
-                    <div class="w-full lg:w-1/2">
-                        <div class="lg:max-w-lg">
-                            <h1 class="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">Best place to choose <br> your <span class="text-blue-500 ">clothes</span></h1>
+            <div class="px-3 mx-auto max-w-7xl mt-10">
+                <!--product row 1-->
+                <div class="grid grid-cols-2 gap-2 lg:gap-4 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    @forelse ($products as $product)
+                        @php
+                            $category = $product->category;
+                        @endphp
+                        <a href="{{ route('product.details',compact('product',)) }}">
+                            <div class="w-full">
+                                <div class="text-center bg-white">
+                                    <div class="block mb-2">
+                                        <div class="relative overflow-hidden">
+                                            <div class="mb-5 overflow-hidden">
+                                                <img class="object-cover w-full mx-auto transition-all h-52 lg:h-72 hover:scale-110"
+                                                    src="{{ env('BASE_URL').$product->product_image }}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <h3 class="uppercase font-normal text-md text-gz-black-200 font-montserrat tracking-wider">{{ $product->name }}</h3>
+                                        <p class="mt-1 text-sm text-gray-600 font-normal font-montserrat tracking-wider">{{$product->description}}</p>
+                                        <p class="mt-1 text-lg font-semibold text-gz-black-100">
+                                            <span>₦{{$product->regular_price }}</span>
+                                        </p>
+                                        <button
+                                            class="flex items-center uppercase justify-center mx-auto mt-4 font-bold text-center text-gz-brown-200 group group">
+                                            Buy Now
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                                class="ml-2 transition-all group-hover:translate-x-2" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    @empty
+                        <div>No products found!</div>
+                    @endforelse   
+                </div>
+            </div>
+            <div class="container mx-auto">
+                <div class="items-center flex flex-col-reverse lg:px-16">
+                    <div class="w-full items-center justify-center mt-6">
+                        <div class="text-center mx-3">
+                            <h1 class="text-xl font-semibold font-montserrat  tracking-wide text-gray-800 dark:text-white lg:text-2xl uppercase">Elevate Your Everyday</h1>
                             
-                            <p class="mt-3 text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro beatae error laborum ab amet sunt recusandae? Reiciendis natus perspiciatis optio.</p>
+                            <p class="mt-3 text-sm text-gray-600 font-normal font-montserrat tracking-wider">Accessorize your look with a bold statement necklace or add some
+                                stackable rings and bracelets to your arm candy.</p>
                             
-                            <button class="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-blue-600 rounded-lg lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">Shop Now</button>
+                            <button class="w-full px-5 underline py-2 text-md font-montserrat tracking-wider text-black transition-colors duration-300 transform bg-blue-600 rounded-lg lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">Shop Gnaza Collection</button>
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
-                        <img class="w-full h-full lg:max-w-3xl" src="https://merakiui.com/images/components/Catalogue-pana.svg" alt="Catalogue-pana.svg">
+                    <div class="flex items-center justify-center w-full mt-0">
+                        <img class="w-full h-full" src="{{ asset('frontend/images/01_HOMEPAGE_TRINITY_BANNER_2560x996.jpg') }}" alt="Catalogue-pana.svg">
                     </div>
                 </div>
             </div>

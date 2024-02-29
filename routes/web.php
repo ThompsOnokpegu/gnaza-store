@@ -10,6 +10,7 @@ use App\Livewire\Backend\Product\CreateProduct;
 use App\Livewire\Backend\Product\UpdateProduct;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,7 +38,8 @@ Route::get('/email',function(){
     return view('emails.new-order-notice',compact('order','order_items'));
 });
 Route::get('/index',function(){
-    return view('frontend.index-fix');
+    $products = Product::all();
+    return view('frontend.index-fix',compact('products'));
 });
 
 
