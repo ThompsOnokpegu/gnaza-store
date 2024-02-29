@@ -26,6 +26,7 @@
                                     stroke-width="1">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
+                                
                             </button>
                             
                         </div>
@@ -33,7 +34,7 @@
                             <img class="w-auto h-11" src="{{ asset('frontend/images/gnaza-logo-black.png') }}" alt="">
                         </a>
             
-                        <!-- Mobile menu button -->
+                        
                         <div class="flex md:hidden">
                             
                             <div class="flex justify-center md:block">
