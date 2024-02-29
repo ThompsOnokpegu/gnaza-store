@@ -78,7 +78,7 @@
                             <p class="mt-3 text-sm text-gray-600 font-normal font-montserrat tracking-wider">Accessorize your look with a bold statement necklace or add some
                                 stackable rings and bracelets to your arm candy.</p>
                             
-                            <button class="w-full px-5 underline py-2 text-md font-montserrat tracking-wider text-black transition-colors duration-300 transform bg-blue-600 rounded-lg lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">Shop Gnaza Collection</button>
+                            <button class="px-1 border-b mt-2 border-b-black text-md font-ridley tracking-wider text-black transition-colors duration-300 transform bg-blue-600 lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">Shop Gnaza Collection</button>
                         </div>
                     </div>
 
@@ -105,12 +105,12 @@
                                                     alt="">
                                             </div>
                                         </div>
-                                        <h3 class="uppercase font-normal text-md text-gz-black-200 font-montserrat tracking-wider">{{ $product->name }}</h3>
-                                        <p class="mt-1 text-sm text-gray-600 font-normal font-montserrat tracking-wider">{{$product->description}}</p>
-                                        <p class="mt-1 text-lg font-semibold text-gz-black-100">
+                                        <h3 class="uppercase text-md text-gz-black-200 font-ridley tracking-wider">{{ $product->name }}</h3>
+                                        <p class="my-2 text-sm text-gray-600 font-normal font-montserrat tracking-wider">{{$product->description}}</p>
+                                        <p class="text-lg font-semibold text-gz-black-100">
                                             <span>₦{{$product->regular_price }}</span>
                                         </p>
-                                        <button
+                                        {{-- <button
                                             class="flex items-center uppercase justify-center mx-auto mt-4 font-bold text-center text-gz-brown-200 group group">
                                             Buy Now
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -118,7 +118,7 @@
                                                 <path fill-rule="evenodd"
                                                     d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                                             </svg>
-                                        </button>
+                                        </button> --}}
                                     </div>
                                 </div>
                             </div>
@@ -128,49 +128,100 @@
                     @endforelse   
                 </div>
             </div>
-            <div class="container mx-auto">
+            <div class="container mx-auto my-10">
                 <div class="items-center flex flex-col-reverse lg:px-16">
                     <div class="w-full items-center justify-center mt-6">
                         <div class="text-center mx-3">
                             <h1 class="text-xl font-semibold font-montserrat  tracking-wide text-gray-800 dark:text-white lg:text-2xl uppercase">Elevate Your Everyday</h1>
                             
-                            <p class="mt-3 text-sm text-gray-600 font-normal font-montserrat tracking-wider">Accessorize your look with a bold statement necklace or add some
+                            <p class="my-4 text-sm text-gray-600 font-normal font-montserrat tracking-wider">Accessorize your look with a bold statement necklace or add some
                                 stackable rings and bracelets to your arm candy.</p>
                             
-                            <button class="w-full px-5 underline py-2 text-md font-montserrat tracking-wider text-black transition-colors duration-300 transform bg-blue-600 rounded-lg lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">Shop Gnaza Collection</button>
+                                <button class="px-1 border-b mt-2 border-b-black text-md font-ridley tracking-wider text-black transition-colors duration-300 transform bg-blue-600 lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">Shop the collection</button>
                         </div>
                     </div>
 
                     <div class="flex items-center justify-center w-full mt-0">
-                        <img class="w-full h-full" src="{{ asset('frontend/images/01_HOMEPAGE_TRINITY_BANNER_2560x996.jpg') }}" alt="Catalogue-pana.svg">
+                        <img class="w-full" src="{{asset('frontend/images/2560x996-LG2.avif')}}" alt="Catalogue-pana.svg">
                     </div>
                 </div>
             </div>
+            <div class="container mx-auto my-10">
+                <div class="items-center flex flex-col-reverse lg:px-16">
+                    <div class="w-full items-center justify-center mt-6">
+                        <div class="text-center mx-3">
+                            <div class="space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0 z-1">
+                                <div class="group relative z-1">
+                                    <div class="relative h-80 w-full overflow-hidden bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
+                                    <img src="{{ asset('frontend/images/gold-bracelet.webp') }}" alt="Gnaza Jewelry Gold Bracelet Collections." class="h-full w-full object-cover object-center">
+                                    </div>
+                                    <h3 class="mt-6 text-lg text-gray-500">
+                                    <a href="{{ route('archive',['category'=>'bracelets']) }}" class="font-ridley tracking-wider uppercase">
+                                        <span class="absolute inset-0"></span>
+                                        Bracelets
+                                    </a>
+                                    </h3>
+                                    <p class="my-3 text-sm font-montserrat tracking-wider font-normal text-gray-900">Stylish wrist accessories.</p>
+                                    <button class="px-1 border-b mt-2 border-b-black text-md font-ridley tracking-wider text-black transition-colors duration-300 transform bg-blue-600 lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">Shop the collection</button>
+                                    
+                                </div>
+                                <div class="group relative">
+                                    <div class="relative h-80 w-full overflow-hidden bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
+                                    <img src="{{ asset('frontend/images/matching-set-jewelry.jpg') }}" alt="Gnaza Jewelry Matching Jewelry Set Collections." class="h-full w-full object-cover object-center">
+                                    </div>
+                                    <h3 class="mt-6 text-lg text-gray-500">
+                                    <a href="{{ route('archive',['category'=>'jewelry-set']) }}" class="font-ridley tracking-wider uppercase" >
+                                        <span class="absolute inset-0"></span>
+                                        Matching Set
+                                    </a>
+                                    </h3>
+                                    <p class="my-3 text-sm font-normal font-montserrat tracking-wider text-gray-900">Elegant neck adornments.</p>
+                                    <button class="px-1 border-b mt-2 border-b-black text-md font-ridley tracking-wider text-black transition-colors duration-300 transform bg-blue-600 lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">Shop the collection</button>
+                                </div>
+                                <div class="group relative">
+                                    <div class="relative h-80 w-full overflow-hidden bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
+                                    <img src="{{ asset('frontend/images/matching-set-jewelry.jpg') }}" alt="Gnaza Jewelry Matching Jewelry Set Collections." class="h-full w-full object-cover object-center">
+                                    </div>
+                                    <h3 class="mt-6 text-lg text-gray-500">
+                                    <a href="{{ route('archive',['category'=>'jewelry-set']) }}" class="font-ridley tracking-wider uppercase" >
+                                        <span class="absolute inset-0"></span>
+                                        Matching Set
+                                    </a>
+                                    </h3>
+                                    <p class="my-3 text-sm font-normal font-montserrat tracking-wider text-gray-900">Elegant neck adornments.</p>
+                                    <button class="px-1 border-b mt-2 border-b-black text-md font-ridley tracking-wider text-black transition-colors duration-300 transform bg-blue-600 lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">Shop the collection</button>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
         </section>
 
-        <footer aria-label="Site Footer" class="bg-gz-brown-300 mb-0">
+        <footer aria-label="Site Footer" class="bg-black mb-0">
             <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-                <a href=""></a><img class="h-12 w-auto mx-auto object-contain" src="{{ asset('frontend/images/gnaza-logo.png') }}" alt="logo" />
+                <a href=""></a><img class="h-12 w-auto mx-auto object-contain" src="{{ asset('frontend/images/gnaza-logo-200.png') }}" alt="logo" />
                 {{-- <div class="mx-auto mt-6 w-full text-center leading-relaxed text-gray-800 font-ridley">Accessorize your look with a bold statement necklace or add some stackable rings and bracelets to your arm candy.</div> --}}
                 <nav aria-label="Footer Nav" class="mt-12">
                     <ul class="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12 font-ridley">
                         <li>
-                        <a class="cursor-pointer font-medium text-gray-800 transition hover:text-gray-800/75 hover:underline"> About </a>
+                        <a class="cursor-pointer font-medium text-gz-brown-200 transition hover:text-gray-800/75 hover:underline"> About </a>
                         </li>
                         <li>
-                        <a class="cursor-pointer font-medium text-gray-800 transition hover:text-gray-800/75 hover:underline"> Products </a>
+                        <a class="cursor-pointer font-medium text-gz-brown-200 transition hover:text-gray-800/75 hover:underline"> Products </a>
                         </li>
                         <li>
-                        <a class="cursor-pointer font-medium text-gray-800 transition hover:text-gray-800/75 hover:underline"> Contact </a>
+                        <a class="cursor-pointer font-medium text-gz-brown-200 transition hover:text-gray-800/75 hover:underline"> Contact </a>
                         </li>
                         <li>
-                        <a class="cursor-pointer font-medium text-gray-800 transition hover:text-gray-800/75 hover:underline"> Terms &amp; Condition </a>
+                        <a class="cursor-pointer font-medium text-gz-brown-200 transition hover:text-gray-800/75 hover:underline"> Terms &amp; Condition </a>
                         </li>
                         <li>
-                        <a class="cursor-pointer font-medium text-gray-800 transition hover:text-gray-800/75 hover:underline"> Privacy Policy </a>
+                        <a class="cursor-pointer font-medium text-gz-brown-200 transition hover:text-gray-800/75 hover:underline"> Privacy Policy </a>
                         </li>
                         <li>
-                        <a class="cursor-pointer font-medium text-gray-800 transition hover:text-gray-800/75 hover:underline"> Exchange &amp; Returns </a>
+                        <a class="cursor-pointer font-medium text-gz-brown-200 transition hover:text-gray-800/75 hover:underline"> Exchange &amp; Returns </a>
                         </li>
                     </ul>
                 </nav>
@@ -208,7 +259,7 @@
                         </a>
                     </li>
                 </ul>
-                <div class="mx-auto mt-12 w-full text-center leading-relaxed text-gray-800">&copy; 2024 All right reserved</div>
+                <div class="mx-auto mt-12 w-full text-center leading-relaxed text-white uppercase">Copyright &copy; {{ now()->year }} Gnaza</div>
             </div>          
         </footer>
 
