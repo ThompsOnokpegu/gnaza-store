@@ -36,6 +36,9 @@ Route::get('/email',function(){
     $order_items = OrderItem::where('order_id',$order->id)->get();
     return view('emails.new-order-notice',compact('order','order_items'));
 });
+Route::get('/index',function(){
+    return view('frontend.index-fix');
+});
 
 
 Route::prefix('/admin')->middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])->group(function () {

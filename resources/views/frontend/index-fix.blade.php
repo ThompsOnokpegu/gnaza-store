@@ -9,49 +9,103 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
-
-        <nav x-data aria-label="Site Navbar">
-            <div class="">
-                <div class="mx-auto max-w-screen-xl px-4 py-4">
-                    <div class="flex items-center justify-between gap-x-8">
-                        <a href="{{ route('home') }}" class="flex cursor-pointer items-center gap-x-1">
-                            <img class="object-cover h-14" src="{{ asset('frontend/images/gnaza-logo-200.png') }}" alt="logo" />
-                        {{-- <span class="text-lg font-black text-gray-900">Gnaza</span> --}}
-                        </a>
-                        <ul class="flex items-center gap-x-6">
-                            @include('frontend.layouts.navigation')
-                            <li class="flex items-center gap-x-4 md:hidden">
-                                <button
-                                @click="
-                                            $refs.dropdown.classList.toggle('h-[200px]')
-                                            $refs.menu.classList.toggle('hidden')
-                                            $refs.close.classList.toggle('hidden')
-                                            "
-                                class="block cursor-pointer p-2 text-sm font-medium hover:border-gray-900/70 hover:text-gray-900/70"
-                                >
-                                <svg x-ref="menu" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" class="h-6 w-6 stroke-gz-brown-200">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        <header class="bg-white dark:bg-gray-900">
+            <nav x-data="{ isOpen: false }" class="relative bg-white dark:bg-gray-900">
+                <div class="container px-6 lg:px-16 py-4 mx-auto md:flex md:justify-between md:items-center">
+                    <div class="flex items-center justify-between">
+                        <div class="flex md:hidden">
+                            <button x-cloak @click="isOpen = !isOpen" type="button" class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu">
+                                <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
                                 </svg>
-                                <svg x-ref="close" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" class="hidden h-6 w-6 stroke-gz-brown-200">
+
+                                <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                    stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
-                                </button>
-                            </li>
-                        </ul>
+                            </button>
+                            
+                        </div>
+                        <a href="#">
+                            <img class="w-auto h-6 sm:h-7" src="https://merakiui.com/images/full-logo.svg" alt="">
+                        </a>
+            
+                        <!-- Mobile menu button -->
+                        <div class="flex md:hidden">
+                            
+                            <div class="flex justify-center md:block">
+                                <a class="relative text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300" href="#">
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                
+                                    <span class="absolute top-0 left-0 p-1 text-xs text-white bg-blue-500 rounded-full"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+                    <div x-cloak :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']" class="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white dark:bg-gray-900 md:bg-transparent md:dark:bg-transparent md:mt-0 md:p-0 md:top-0 md:relative md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center">
+                        <div class="flex flex-col md:flex-row md:mx-6">
+                            <a class="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Home</a>
+                            <a class="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Shop</a>
+                            <a class="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Contact</a>
+                            <a class="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">About</a>
+                        </div>
+            
+                        <div class="flex justify-center md:block">
+                            <a class="hidden md:block relative text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300" href="#">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+            
+                                <span class="absolute top-0 left-0 p-1 text-xs text-white bg-blue-500 rounded-full"></span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div x-ref="dropdown" class="duration-900 h-0 overflow-y-hidden transition-all md:hidden">
-                <hr class="border-gz-brown-300" />
-                <ul class="mx-auto max-w-screen-xl px-4 py-4">
-                    @include('frontend.layouts.mobile-menu')
-                </ul>
+            </nav>
+
+            <div class="container px-6 lg:px-16 py-16 mx-auto">
+                <div class="items-center flex">
+                    <div class="w-full lg:w-1/2">
+                        <div class="lg:max-w-lg">
+                            <h1 class="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">Best place to choose <br> your <span class="text-blue-500 ">clothes</span></h1>
+                            
+                            <p class="mt-3 text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro beatae error laborum ab amet sunt recusandae? Reiciendis natus perspiciatis optio.</p>
+                            
+                            <button class="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-blue-600 rounded-lg lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">Shop Now</button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
+                        <img class="w-full h-full lg:max-w-3xl" src="https://merakiui.com/images/components/Catalogue-pana.svg" alt="Catalogue-pana.svg">
+                    </div>
                 </div>
             </div>
-        </nav>
+        </header>
+        <section class="bg-white dark:bg-gray-900">
+            <div class="container px-6 lg:px-16 py-16 mx-auto">
+                <div class="items-center lg:flex">
+                    <div class="w-full lg:w-1/2">
+                        <div class="lg:max-w-lg">
+                            <h1 class="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">Best place to choose <br> your <span class="text-blue-500 ">clothes</span></h1>
+                            
+                            <p class="mt-3 text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro beatae error laborum ab amet sunt recusandae? Reiciendis natus perspiciatis optio.</p>
+                            
+                            <button class="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-blue-600 rounded-lg lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">Shop Now</button>
+                        </div>
+                    </div>
 
-        @yield('content')
+                    <div class="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
+                        <img class="w-full h-full lg:max-w-3xl" src="https://merakiui.com/images/components/Catalogue-pana.svg" alt="Catalogue-pana.svg">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <footer aria-label="Site Footer" class="bg-gz-brown-300">
+        <footer aria-label="Site Footer" class="bg-gz-brown-300 mb-0">
             <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
                 <a href=""></a><img class="h-12 w-auto mx-auto object-contain" src="{{ asset('frontend/images/gnaza-logo.png') }}" alt="logo" />
                 {{-- <div class="mx-auto mt-6 w-full text-center leading-relaxed text-gray-800 font-ridley">Accessorize your look with a bold statement necklace or add some stackable rings and bracelets to your arm candy.</div> --}}
@@ -114,14 +168,7 @@
                 <div class="mx-auto mt-12 w-full text-center leading-relaxed text-gray-800">&copy; 2024 All right reserved</div>
             </div>          
         </footer>
-        <script>
-            function toggleMiniCart() {
-                document.getElementById('mini-cart-container').classList.toggle('invisible');
-                document.getElementById('mini-cart-bg').classList.toggle('opacity-0');
-                document.getElementById('mini-cart-bg').classList.toggle('opacity-50');
-                document.getElementById('mini-cart').classList.toggle('translate-x-full');
-                }
-        </script>
+
         <script src="//unpkg.com/alpinejs" defer></script>
     </body>
 </html>
