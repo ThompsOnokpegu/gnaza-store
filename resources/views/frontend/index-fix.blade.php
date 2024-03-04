@@ -196,7 +196,61 @@
                         </div>
                     </div>
                 </div>
-            </div>  
+            </div> 
+            <div class="bg-white py-24" style="background-color: #f9f9f9">
+                <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                  {{-- <div class="mx-auto max-w-2xl lg:text-center">
+                    <h2 class="text-base font-semibold leading-7 text-indigo-600">Deploy faster</h2>
+                    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Everything you need to deploy your app</p>
+                    <p class="mt-6 text-lg leading-8 text-gray-600">Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum pulvinar et feugiat blandit at. In mi viverra elit nunc.</p>
+                  </div> --}}
+                  <div class="mx-auto max-w-2xl lg:max-w-4xl">
+                    <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+                      <div class="relative pl-16">
+                        <dt class="text-base font-semibold leading-7 uppercase text-gray-900">
+                          <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg border border-gz-black-200">
+                            <svg class="h-6 w-6 text-gz-black-200" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+                            </svg>
+                          </div>
+                          Fast Delivery
+                        </dt>
+                        <dd class="mt-2 text-base leading-7 text-gray-600">Usually 12 - 24hrs within Abuja.</dd>
+                      </div>
+                      <div class="relative pl-16">
+                        <dt class="text-base font-semibold leading-7 uppercase text-gray-900">
+                          <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg border border-gz-black-200">
+                            <svg class="h-6 w-6 text-gz-black-200" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                            </svg>
+                          </div>
+                          Easy Return or Exchange
+                        </dt>
+                        <dd class="mt-2 text-base leading-7 text-gray-600">Request a return or exchange within 7 days.</dd>
+                      </div>
+                    </dl>
+                  </div>
+                </div>
+            </div>
+            <div class="relative isolate overflow-hidden bg-gray-900 py-16 sm:py-24 lg:py-32 ">
+                <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                    <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none">
+                        <div class="items-center justify-center text-center">
+                            <h2 class="text-xl font-semibold tracking-tight font-montserrat text-black sm:text-xl uppercase">Subscribe to our newsletter.</h2>
+                            <div class="w-full text-center mt-10">
+                                <form action="#">
+                                    <div class="max-w-sm mx-auto p-1 flex items-center">
+                                        <input type="email" name="floating_email" id="floating_email" class="block py-2 px-0 w-full text-sm text-gz-black-200 bg-transparent border-0 border-b-2 border-black appearance-none focus:outline-none focus:border-black focus:ring-0  peer" placeholder="Email address " required />
+                                        
+                                        <button type="submit"
+                                            class="bg-black text-white uppercase text-base font-semibold hover:bg-black-100 p-2">Subscribe</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>      
         </section>
 
         <footer aria-label="Site Footer" class="bg-black mb-0">
