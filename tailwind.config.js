@@ -40,6 +40,9 @@ export default {
             'black': '#000000',
             'gz-black-200': '#2b2620',
             'gz-black-300': '#413a31',
+            'gz-black-500': '#555555',
+            'gz-black-600': '#666666',
+            'gz-black-700': '#777777',
 
             'gz-danger':'#D82424',
             'gz-danger-bg':'#FFC1CB',
