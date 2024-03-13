@@ -15,7 +15,7 @@ class UserController extends Controller
 
     public function index(){
         $products = Product::all();
-        return view('frontend.index',compact('products'));
+        return view('frontend.index-fix',compact('products'));
     }
 
     public function productDetails(Product $product){

@@ -6,74 +6,162 @@
         <link rel="stylesheet" href="{{ asset('frontend/styless.min.css') }}">
         <link href="https://fonts.cdnfonts.com/css/ridley-grotesk" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Meddon&family=Montserrat:wght@300;400;600;700&family=Playfair+Display&display=swap">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
-
-        <nav x-data aria-label="Site Navbar">
-            <div class="">
-                <div class="mx-auto max-w-screen-xl px-4 py-4">
-                    <div class="flex items-center justify-between gap-x-8">
-                        <a href="{{ route('home') }}" class="flex cursor-pointer items-center gap-x-1">
-                            <img class="object-cover h-14" src="{{ asset('frontend/images/gnaza-logo-200.png') }}" alt="logo" />
-                        {{-- <span class="text-lg font-black text-gray-900">Gnaza</span> --}}
-                        </a>
-                        <ul class="flex items-center gap-x-6">
-                            @include('frontend.layouts.navigation')
-                            <li class="flex items-center gap-x-4 md:hidden">
-                                <button
-                                @click="
-                                            $refs.dropdown.classList.toggle('h-[200px]')
-                                            $refs.menu.classList.toggle('hidden')
-                                            $refs.close.classList.toggle('hidden')
-                                            "
-                                class="block cursor-pointer p-2 text-sm font-medium hover:border-gray-900/70 hover:text-gray-900/70"
-                                >
-                                <svg x-ref="menu" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" class="h-6 w-6 stroke-gz-brown-200">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                                </svg>
-                                <svg x-ref="close" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" class="hidden h-6 w-6 stroke-gz-brown-200">
+        <header class="bg-white dark:bg-gray-900 sticky top-0 shadow z-50">
+            <nav x-data="{ isOpen: false }" class="bg-white dark:bg-gray-900">
+                <div class="container px-2 lg:px-16 py-4 mx-auto md:flex md:justify-between md:items-center">
+                    <div class="flex items-center justify-between">
+                        <div class="flex md:hidden">
+                            <button x-cloak @click="isOpen = !isOpen" type="button" class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu">
+                                {{-- <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
+                                </svg> --}}
+                                <svg x-show="!isOpen" class="w-7 h-7" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m3.5 7c-.27614237 0-.5-.22385763-.5-.5s.22385763-.5.5-.5h17c.2761424 0 .5.22385763.5.5s-.2238576.5-.5.5zm0 5c-.27614237 0-.5-.2238576-.5-.5s.22385763-.5.5-.5h17c.2761424 0 .5.2238576.5.5s-.2238576.5-.5.5zm0 5c-.27614237 0-.5-.2238576-.5-.5s.22385763-.5.5-.5h17c.2761424 0 .5.2238576.5.5s-.2238576.5-.5.5z"/></svg>
+                                <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                    stroke-width="1">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
-                                </button>
-                            </li>
-                        </ul>
+                                
+                            </button>
+                            
+                        </div>
+                        <a href="#">
+                            <img class="w-auto h-11" src="{{ asset('frontend/images/gnaza-logo-black.png') }}" alt="">
+                        </a>
+            
+                        
+                        <div class="flex md:hidden">
+                            
+                            <div class="flex justify-center md:block">
+                                <a class="relative transition-colors duration-300 transform hover:text-gray-600" href="#">
+                                    <svg class="h-7 w-7" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="m11 3a3 3 0 0 0 -3 3h-3v1 11 1h12v-1-11-1h-3a3 3 0 0 0 -3-3zm0 1a2 2 0 0 1 2 2h-4a2 2 0 0 1 2-2zm-5 3h2v1.0878906a1.5 1.5 0 0 0 -1 1.4121094 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0 -1-1.4121094v-1.0878906h4v1.0878906a1.5 1.5 0 0 0 -1 1.4121094 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0 -1-1.4121094v-1.0878906h2v11h-10zm2.5 2a.5.5 0 0 1 .5.5.5.5 0 0 1 -.5.5.5.5 0 0 1 -.5-.5.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5.5.5 0 0 1 -.5.5.5.5 0 0 1 -.5-.5.5.5 0 0 1 .5-.5z" fill="#232629"/></svg>
+                                    <span class="absolute top-0 left-0 p-1 text-xs bg-gz-brown-300 bg-blue-500 rounded-full"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+                    <div x-cloak :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']" class="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white dark:bg-gray-900 md:bg-transparent md:dark:bg-transparent md:mt-0 md:p-0 md:top-0 md:relative md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center">
+                        <div class="flex flex-col md:flex-row md:mx-6">
+                            <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="#">Matching Set</a>
+                            <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="#">Necklaces</a>
+                            {{-- <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="#">Rings</a>
+                            <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="#">Watches</a> --}}
+                            <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="#">Bracelets</a>
+                            <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="#">Earrings</a>
+                        </div>
+            
+                        <div class="flex justify-center md:block">
+                            <a class="hidden md:block relative text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300" href="#">
+                                <svg class="h-7 w-7" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="m11 3a3 3 0 0 0 -3 3h-3v1 11 1h12v-1-11-1h-3a3 3 0 0 0 -3-3zm0 1a2 2 0 0 1 2 2h-4a2 2 0 0 1 2-2zm-5 3h2v1.0878906a1.5 1.5 0 0 0 -1 1.4121094 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0 -1-1.4121094v-1.0878906h4v1.0878906a1.5 1.5 0 0 0 -1 1.4121094 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0 -1-1.4121094v-1.0878906h2v11h-10zm2.5 2a.5.5 0 0 1 .5.5.5.5 0 0 1 -.5.5.5.5 0 0 1 -.5-.5.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5.5.5 0 0 1 -.5.5.5.5 0 0 1 -.5-.5.5.5 0 0 1 .5-.5z" fill="#232629"/></svg>
+            
+                                <span class="absolute top-0 left-0 p-1 text-xs text-white bg-blue-500 rounded-full"></span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div x-ref="dropdown" class="duration-900 h-0 overflow-y-hidden transition-all md:hidden">
-                <hr class="border-gz-brown-300" />
-                <ul class="mx-auto max-w-screen-xl px-4 py-4">
-                    @include('frontend.layouts.mobile-menu')
-                </ul>
+            </nav>
+        </header>
+        {{-- CONTENT --}}
+        <section class="bg-white z-0">
+           
+            @yield('content')
+            
+        </section>
+        {{-- END CONTENT --}}
+        {{-- PRE-FOOTER --}}
+        <section class="bg-white z-0">
+            {{-- FEATURES --}}
+            <div class="bg-white py-24" style="background-color: #f9f9f9">
+                <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                  {{-- <div class="mx-auto max-w-2xl lg:text-center">
+                    <h2 class="text-base font-semibold leading-7 text-indigo-600">Deploy faster</h2>
+                    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Everything you need to deploy your app</p>
+                    <p class="mt-6 text-lg leading-8 text-gray-600">Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum pulvinar et feugiat blandit at. In mi viverra elit nunc.</p>
+                  </div> --}}
+                  <div class="mx-auto max-w-2xl lg:max-w-4xl">
+                    <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+                      <div class="relative pl-16">
+                        <dt class="text-base font-semibold leading-7 uppercase text-gray-900">
+                          <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg border border-gz-black-200">
+                            <svg class="h-6 w-6 text-gz-black-200" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+                            </svg>
+                          </div>
+                          Fast Delivery
+                        </dt>
+                        <dd class="mt-2 text-base leading-7 text-gray-600">Usually 12 - 24hrs within Abuja.</dd>
+                      </div>
+                      <div class="relative pl-16">
+                        <dt class="text-base font-semibold leading-7 uppercase text-gray-900">
+                          <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg border border-gz-black-200">
+                            <svg class="h-6 w-6 text-gz-black-200" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                            </svg>
+                          </div>
+                          Easy Return or Exchange
+                        </dt>
+                        <dd class="mt-2 text-base leading-7 text-gray-600">Request a return or exchange within 7 days.</dd>
+                      </div>
+                    </dl>
+                  </div>
                 </div>
             </div>
-        </nav>
+            {{-- END FEATURES --}}
 
-        @yield('content')
-
-        <footer aria-label="Site Footer" class="bg-gz-brown-300">
+            {{-- SUBSCRIBE --}}
+            <div class="relative isolate overflow-hidden bg-gray-900 py-16 sm:py-24 lg:py-32 ">
+                <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                    <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none">
+                        <div class="items-center justify-center text-center">
+                            <h2 class="text-xl font-semibold tracking-tight font-montserrat text-black sm:text-xl uppercase">Subscribe to our newsletter.</h2>
+                            <div class="w-full text-center mt-10">
+                                <form action="#">
+                                    <div class="max-w-sm mx-auto p-1 flex items-center">
+                                        <input type="email" name="floating_email" id="floating_email" class="block py-2 px-0 w-full text-sm text-gz-black-200 bg-transparent border-0 border-b-2 border-black appearance-none focus:outline-none focus:border-black focus:ring-0  peer" placeholder="Email address " required />
+                                        
+                                        <button type="submit"
+                                            class="bg-black text-white uppercase text-base font-semibold hover:bg-black-100 p-2">Subscribe</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- END SUBSCRIBE --}}
+        </section>
+        {{-- END PRE-FOOTER --}}
+        {{-- FOOTER --}}
+        <footer aria-label="Site Footer" class="bg-black mb-0">
             <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-                <a href=""></a><img class="h-12 w-auto mx-auto object-contain" src="{{ asset('frontend/images/gnaza-logo.png') }}" alt="logo" />
+                <a href=""></a><img class="h-12 w-auto mx-auto object-contain" src="{{ asset('frontend/images/gnaza-logo-200.png') }}" alt="logo" />
                 {{-- <div class="mx-auto mt-6 w-full text-center leading-relaxed text-gray-800 font-ridley">Accessorize your look with a bold statement necklace or add some stackable rings and bracelets to your arm candy.</div> --}}
                 <nav aria-label="Footer Nav" class="mt-12">
                     <ul class="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12 font-ridley">
                         <li>
-                        <a class="cursor-pointer font-medium text-gray-800 transition hover:text-gray-800/75 hover:underline"> About </a>
+                        <a class="cursor-pointer font-medium text-gz-brown-200 transition hover:text-gray-800/75 hover:underline"> About </a>
                         </li>
                         <li>
-                        <a class="cursor-pointer font-medium text-gray-800 transition hover:text-gray-800/75 hover:underline"> Products </a>
+                        <a class="cursor-pointer font-medium text-gz-brown-200 transition hover:text-gray-800/75 hover:underline"> Products </a>
                         </li>
                         <li>
-                        <a class="cursor-pointer font-medium text-gray-800 transition hover:text-gray-800/75 hover:underline"> Contact </a>
+                        <a class="cursor-pointer font-medium text-gz-brown-200 transition hover:text-gray-800/75 hover:underline"> Contact </a>
                         </li>
                         <li>
-                        <a class="cursor-pointer font-medium text-gray-800 transition hover:text-gray-800/75 hover:underline"> Terms &amp; Condition </a>
+                        <a class="cursor-pointer font-medium text-gz-brown-200 transition hover:text-gray-800/75 hover:underline"> Terms &amp; Condition </a>
                         </li>
                         <li>
-                        <a class="cursor-pointer font-medium text-gray-800 transition hover:text-gray-800/75 hover:underline"> Privacy Policy </a>
+                        <a class="cursor-pointer font-medium text-gz-brown-200 transition hover:text-gray-800/75 hover:underline"> Privacy Policy </a>
                         </li>
                         <li>
-                        <a class="cursor-pointer font-medium text-gray-800 transition hover:text-gray-800/75 hover:underline"> Exchange &amp; Returns </a>
+                        <a class="cursor-pointer font-medium text-gz-brown-200 transition hover:text-gray-800/75 hover:underline"> Exchange &amp; Returns </a>
                         </li>
                     </ul>
                 </nav>
@@ -111,17 +199,10 @@
                         </a>
                     </li>
                 </ul>
-                <div class="mx-auto mt-12 w-full text-center leading-relaxed text-gray-800">&copy; 2024 All right reserved</div>
+                <div class="mx-auto mt-12 w-full text-center leading-relaxed text-white uppercase">Copyright &copy; {{ now()->year }} Gnaza</div>
             </div>          
         </footer>
-        <script>
-            function toggleMiniCart() {
-                document.getElementById('mini-cart-container').classList.toggle('invisible');
-                document.getElementById('mini-cart-bg').classList.toggle('opacity-0');
-                document.getElementById('mini-cart-bg').classList.toggle('opacity-50');
-                document.getElementById('mini-cart').classList.toggle('translate-x-full');
-                }
-        </script>
+        {{-- END FOOTER --}}
         <script src="//unpkg.com/alpinejs" defer></script>
     </body>
 </html>
