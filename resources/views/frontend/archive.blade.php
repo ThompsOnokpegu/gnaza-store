@@ -3,7 +3,7 @@
 @section('content')
 
 
-<section style="background-image: url('{{ asset('/frontend/images/matching-set-jewelry.jpg') }}')" class="bg-center bg-repeat-x bg-cover bg-gz-brown-300 bg-blend-multiply">
+<section style="background-image: url('{{ asset('/frontend/images/2560x996-LG2.avif') }}')" class="bg-center bg-repeat-x bg-cover bg-gz-brown-300 bg-blend-multiply">
     <div class="px-4 mx-auto max-w-screen-xl text-center py-7 lg:py-18">
         <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Elevate Your <span class=" font-meddon">Everyday!</span></h1>
         <p class="mb-8 text-lg font-normal uppercase font-ridley text-white lg:text-xl sm:px-16 lg:px-48">{{ $category_name }}</p>

@@ -30,7 +30,7 @@
                             </button>
                             
                         </div>
-                        <a href="#">
+                        <a href="{{ route('home') }}">
                             <img class="w-auto h-11" src="{{ asset('frontend/images/gnaza-logo-black.png') }}" alt="">
                         </a>
             
@@ -38,7 +38,7 @@
                         <div class="flex md:hidden">
                             
                             <div class="flex justify-center md:block">
-                                <a class="relative transition-colors duration-300 transform hover:text-gray-600" href="#">
+                                <a class="relative transition-colors duration-300 transform hover:text-gray-600" href="{{ route('cart') }}">
                                     <svg class="h-7 w-7" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="m11 3a3 3 0 0 0 -3 3h-3v1 11 1h12v-1-11-1h-3a3 3 0 0 0 -3-3zm0 1a2 2 0 0 1 2 2h-4a2 2 0 0 1 2-2zm-5 3h2v1.0878906a1.5 1.5 0 0 0 -1 1.4121094 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0 -1-1.4121094v-1.0878906h4v1.0878906a1.5 1.5 0 0 0 -1 1.4121094 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0 -1-1.4121094v-1.0878906h2v11h-10zm2.5 2a.5.5 0 0 1 .5.5.5.5 0 0 1 -.5.5.5.5 0 0 1 -.5-.5.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5.5.5 0 0 1 -.5.5.5.5 0 0 1 -.5-.5.5.5 0 0 1 .5-.5z" fill="#232629"/></svg>
                                     <span class="absolute top-0 left-0 p-1 text-xs bg-gz-brown-300 bg-blue-500 rounded-full"></span>
                                 </a>
@@ -47,18 +47,20 @@
                     </div>
             
                     <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+
                     <div x-cloak :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']" class="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white dark:bg-gray-900 md:bg-transparent md:dark:bg-transparent md:mt-0 md:p-0 md:top-0 md:relative md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center">
                         <div class="flex flex-col md:flex-row md:mx-6">
-                            <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="#">Matching Set</a>
-                            <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="#">Necklaces</a>
-                            {{-- <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="#">Rings</a>
+                            <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="{{ route('shop') }}">Shop</a>
+                            <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="{{ route('archive',['category'=>'jewelry-set']) }}">Matching Set</a>
+                            <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="{{ route('archive',['category'=>'necklaces']) }}">Necklaces</a>
+                            {{-- <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="{{ route('archive',['category'=>'rings']) }}">Rings</a>
                             <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="#">Watches</a> --}}
-                            <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="#">Bracelets</a>
-                            <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="#">Earrings</a>
+                            <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="{{ route('archive',['category'=>'bracelets']) }}">Bracelets</a>
+                            <a class="my-2 text-gray-700 font-montserrat tracking-wider uppercase transition-colors duration-300 transform hover:text-blue-500 md:mx-4 md:my-0" href="{{ route('archive',['category'=>'earrings']) }}">Earrings</a>
                         </div>
             
                         <div class="flex justify-center md:block">
-                            <a class="hidden md:block relative text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300" href="#">
+                            <a class="hidden md:block relative text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300" href="{{ route('cart') }}">
                                 <svg class="h-7 w-7" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><path d="m11 3a3 3 0 0 0 -3 3h-3v1 11 1h12v-1-11-1h-3a3 3 0 0 0 -3-3zm0 1a2 2 0 0 1 2 2h-4a2 2 0 0 1 2-2zm-5 3h2v1.0878906a1.5 1.5 0 0 0 -1 1.4121094 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0 -1-1.4121094v-1.0878906h4v1.0878906a1.5 1.5 0 0 0 -1 1.4121094 1.5 1.5 0 0 0 1.5 1.5 1.5 1.5 0 0 0 1.5-1.5 1.5 1.5 0 0 0 -1-1.4121094v-1.0878906h2v11h-10zm2.5 2a.5.5 0 0 1 .5.5.5.5 0 0 1 -.5.5.5.5 0 0 1 -.5-.5.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5.5.5 0 0 1 -.5.5.5.5 0 0 1 -.5-.5.5.5 0 0 1 .5-.5z" fill="#232629"/></svg>
             
                                 <span class="absolute top-0 left-0 p-1 text-xs text-white bg-blue-500 rounded-full"></span>
