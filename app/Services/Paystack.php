@@ -113,7 +113,7 @@ class Paystack {
     }
 
     public function webhook(Request $request){
-        Log::info('Webhook was fired');
+        // Log::info('Webhook was fired');
 
         // Check if it's a POST request with Paystack signature header
         if ((strtoupper($_SERVER['REQUEST_METHOD']) != 'POST' ) || !array_key_exists('HTTP_X_PAYSTACK_SIGNATURE', $_SERVER) ) {
@@ -131,7 +131,7 @@ class Paystack {
 
         // Verify if the Paystack signature matches the generated one
         if ($paystackSignature === $generatedSignature) {
-            Log::info('Signature verification successful');
+            // Log::info('Signature verification successful');
             
             // Decode the payload as a JSON object
             $event = json_decode($payload);
@@ -146,7 +146,7 @@ class Paystack {
 
             switch ($event->event) {
                 case 'charge.success':
-                    Log::info("Processing charge.success event for reference: $reference");
+                    // Log::info("Processing charge.success event for reference: $reference");
 
                     // Find the order associated with the reference
                     $order = Order::where('reference', $reference)->first();
@@ -158,18 +158,18 @@ class Paystack {
                         $order->save();
 
                         // Log success
-                        Log::info("Order {$order->id} status updated to Processing and paid.");
+                        // Log::info("Order {$order->id} status updated to Processing and paid.");
 
                         // Send email notifications
                         Mail::to($order->user->email)->send(new OrderReceived($order));
                         Mail::to('care@gnaza.com')->send(new NewOrderNotice($order));
                     } else {
-                        Log::warning("Order with reference {$reference} not found");
+                        // Log::warning("Order with reference {$reference} not found");
                     }
                     break;
 
                 default:
-                    Log::info("Unhandled event type: {$event->event}");
+                    // Log::info("Unhandled event type: {$event->event}");
                     break;
             }
 
