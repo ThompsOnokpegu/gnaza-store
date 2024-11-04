@@ -6,7 +6,7 @@
     <div class="items-center flex flex-col-reverse lg:px-16">
         <div class="w-full items-center justify-center mt-6">
             <div class="text-center mx-3">
-                <h1 class="text-xl font-semibold font-montserrat  tracking-wide text-gray-800 dark:text-white lg:text-2xl uppercase">Elevate Your Everyday</h1>
+                <h1 class="text-xl font-semibold font-montserrat  tracking-wide text-gray-800">Elevate Your Everyday</h1>
                 
                 <p class="mt-3 text-sm text-gray-600 font-normal font-montserrat tracking-wider">Accessorize your look with a bold statement necklace or add some
                     stackable rings and bracelets to your arm candy.</p>
@@ -69,7 +69,7 @@
     <div class="items-center flex flex-col-reverse lg:px-16">
         <div class="w-full items-center justify-center mt-6">
             <div class="text-center mx-3">
-                <h1 class="text-xl font-semibold font-montserrat  tracking-wide text-gray-800 dark:text-white lg:text-2xl uppercase">Elevate Your Everyday</h1>
+                <h1 class="text-xl font-semibold font-montserrat  tracking-wide text-gray-800">Elevate Your Everyday</h1>
                 
                 <p class="my-4 text-sm text-gray-600 font-normal font-montserrat tracking-wider">Accessorize your look with a bold statement necklace or add some
                     stackable rings and bracelets to your arm candy.</p>
