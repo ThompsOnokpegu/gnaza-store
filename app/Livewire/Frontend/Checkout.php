@@ -120,16 +120,18 @@ class Checkout extends Component
         //New order Email is triggered in Webhook charge.success  
         // Mail::to($user->email)->send(new OrderReceived($order));
         // Mail::to('care@gnaza.com')->send(new NewOrderNotice($order));
+        if($payment_link){
+            //clear cart
+            $this->cart->clear();
 
-        //clear cart
-        $this->cart->clear();
-
-        //process payment: redirect to Paystack Gateway
-        try {
-            return redirect()->away($payment_link['authorization_url']);
-        } catch (Exception $e) {
-            return session()->flash('message','Connection failed: try again later!');
+            //process payment: redirect to Paystack Gateway
+            try {
+                return redirect()->away($payment_link['authorization_url']);
+            } catch (Exception $e) {
+                return session()->flash('message','Connection failed: try again later!');
+            }
         }
+        
          
     }
 
