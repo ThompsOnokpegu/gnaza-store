@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WebhookController;
 use App\Livewire\Backend\Category\AddCategory;
 use App\Livewire\Backend\Category\Categories;
 use App\Livewire\Backend\Product\CreateProduct;
@@ -31,6 +32,7 @@ Route::get('/checkout',[UserController::class,'checkout'])->name('checkout');
 Route::get('/order/thank-you/{reference}',[UserController::class,'thankYou'])->name('thank-you');
 Route::get('/all-products',[UserController::class,'shop'])->name('shop');
 Route::get('/collections/{category}',[UserController::class,'archive'])->name('archive');
+Route::post('/webhook',[WebhookController::class,'handle']);
 //PREVIEW EMAILS
 Route::get('/email',function(){
     $order = Order::find(9);

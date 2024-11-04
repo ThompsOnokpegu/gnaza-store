@@ -113,6 +113,7 @@ class Paystack {
     }
 
     public function webhook(Request $request){
+        Log::info('webhook was fired');
         // Check if it's a POST request with Paystack signature header
         if ((strtoupper($_SERVER['REQUEST_METHOD']) != 'POST' ) || !array_key_exists('HTTP_X_PAYSTACK_SIGNATURE', $_SERVER) ) {
             // Ignore other types of requests
