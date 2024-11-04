@@ -23,7 +23,7 @@
 
 <section class="flex items-center flex-col bg-white pb-24">
     
-    {{-- FEATURED PRODUCTS --}}
+    {{-- FEATURED PRODUCTS --}} 
 <div class="px-3 mx-auto max-w-7xl mt-10">
     <!--product row 1-->
     <div class="grid grid-cols-2 gap-2 lg:gap-4 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -47,15 +47,6 @@
                             <p class="text-lg font-semibold text-gz-black-100">
                                 <span>₦{{$product->regular_price }}</span>
                             </p>
-                            {{-- <button
-                                class="flex items-center uppercase justify-center mx-auto mt-4 font-bold text-center text-gz-brown-200 group group">
-                                Buy Now
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="ml-2 transition-all group-hover:translate-x-2" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                                </svg>
-                            </button> --}}
                         </div>
                     </div>
                 </div>
